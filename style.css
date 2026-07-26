@@ -1,6 +1,5 @@
 body{
     margin:0;
-    padding:0;
     font-family:Arial,sans-serif;
     background:#0D1117;
     color:white;
@@ -8,53 +7,77 @@ body{
 
 header{
     background:#161B22;
-    padding:15px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:15px 25px;
+    position:sticky;
+    top:0;
 }
 
 .logo{
     color:#00C853;
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    margin-left:15px;
+    margin-left:20px;
+    font-size:16px;
+}
+
+nav a:hover{
+    color:#00C853;
 }
 
 .hero{
-    padding:40px 20px;
     text-align:center;
+    padding:80px 20px;
 }
 
 .hero h1{
-    font-size:38px;
+    font-size:42px;
+    margin-bottom:20px;
 }
 
 .hero p{
-    color:#ccc;
+    color:#cccccc;
+    max-width:600px;
+    margin:auto;
+    line-height:1.8;
 }
 
 .btn{
+    margin-top:30px;
     background:#00C853;
     color:white;
-    padding:15px 30px;
+    padding:15px 40px;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
     font-size:18px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#00a844;
 }
 
 .markets{
-    padding:20px;
+    padding:30px;
 }
 
 .card{
     background:#161B22;
-    margin:15px 0;
+    border:1px solid #2b3137;
+    border-radius:15px;
     padding:20px;
-    border-radius:12px;
+    margin:15px 0;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00C853;
 }
