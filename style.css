@@ -98,3 +98,15 @@ margin-top:40px;
 color:#00C853;
 margin-bottom:10px;
 }
+button{
+margin:10px;
+}
+
+.hero h2{
+font-size:40px;
+color:#00C853;
+}
+
+.card{
+cursor:pointer;
+}
