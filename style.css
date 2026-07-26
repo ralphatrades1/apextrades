@@ -1,0 +1,60 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+    background:#0D1117;
+    color:white;
+}
+
+header{
+    background:#161B22;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#00C853;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+}
+
+.hero{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:38px;
+}
+
+.hero p{
+    color:#ccc;
+}
+
+.btn{
+    background:#00C853;
+    color:white;
+    padding:15px 30px;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+}
+
+.markets{
+    padding:20px;
+}
+
+.card{
+    background:#161B22;
+    margin:15px 0;
+    padding:20px;
+    border-radius:12px;
+}
