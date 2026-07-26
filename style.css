@@ -81,3 +81,20 @@ nav a:hover{
     transform:translateY(-5px);
     border-color:#00C853;
 }
+footer{
+background:#161B22;
+padding:30px;
+text-align:center;
+margin-top:40px;
+color:#888;
+}
+
+h2{
+text-align:center;
+margin-top:40px;
+}
+
+.card h3{
+color:#00C853;
+margin-bottom:10px;
+}
