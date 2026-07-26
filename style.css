@@ -150,3 +150,18 @@ border:none;
 border-radius:8px;
 width:48%;
 }
+.card h1{
+    font-size:36px;
+    margin:10px 0;
+    color:#00C853;
+}
+
+.card p{
+    color:#999;
+}
+
+.markets{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
