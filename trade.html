@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRJ Professional Trade</title>
+
+<title>TRJ Live Trade</title>
 
 <script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
 
 <style>
 body{
     margin:0;
-    background:#08111f;
+    background:#07111f;
     color:white;
     font-family:Arial,sans-serif;
 }
@@ -18,13 +19,12 @@ body{
 .header{
     display:flex;
     justify-content:space-between;
-    padding:18px;
+    padding:20px;
     background:#111827;
 }
 
 .balance{
     color:#22c55e;
-    font-weight:bold;
 }
 
 .container{
@@ -39,35 +39,28 @@ body{
 }
 
 .price{
-    font-size:32px;
+    font-size:34px;
     color:#38bdf8;
-    font-weight:bold;
 }
 
 #chart{
     height:360px;
 }
 
-.symbol{
-    color:#94a3b8;
-}
-
 button{
-    border:0;
-    border-radius:10px;
     padding:12px;
     margin:5px;
-    cursor:pointer;
+    border:none;
+    border-radius:8px;
     color:white;
-    background:#1e293b;
+    background:#1f2937;
 }
 
 input{
     width:100%;
     padding:12px;
     border-radius:8px;
-    border:0;
-    margin:10px 0;
+    border:none;
 }
 
 .up{
@@ -84,14 +77,13 @@ input{
 
 .timer{
     text-align:center;
-    font-size:25px;
+    font-size:24px;
     margin-top:15px;
 }
 
-.result{
+.message{
     text-align:center;
     margin-top:10px;
-    font-weight:bold;
 }
 </style>
 
@@ -110,29 +102,26 @@ Balance: £1,000.00
 <div class="container">
 
 <div class="card">
-<div class="symbol">
-BTC/USD • Live Market
-</div>
-
+<h3>Market</h3>
+<p>BTC/USD</p>
 <div class="price" id="price">
-100.000
+0.0000
 </div>
 </div>
 
 
 <div class="card">
 
-<h3>Live Chart</h3>
+<h3>Price Chart</h3>
 
 <div id="chart"></div>
 
 </div>
 
 
-
 <div class="card">
 
-<h3>Trade Type</h3>
+<h3>Contract</h3>
 
 <button>Rise/Fall</button>
 <button>Even/Odd</button>
@@ -140,132 +129,14 @@ BTC/USD • Live Market
 <button>Differs</button>
 
 
-<h3>Stake</h3>
+<h3>Stake Amount</h3>
 
-<input type="number" placeholder="Enter amount">
+<input type="number" placeholder="Enter stake">
 
 
-<button class="up" onclick="placeTrade('UP')">
+<button class="up" onclick="buy('UP')">
 🟢 BUY UP
 </button>
 
 
-<button class="down" onclick="placeTrade('DOWN')">
-🔴 BUY DOWN
-</button>
-
-
-<div class="timer">
-Expiry: <span id="timer">10</span>s
-</div>
-
-
-<div class="result" id="result"></div>
-
-</div>
-
-</div>
-
-
-
-<script>
-
-const chart = LightweightCharts.createChart(
-document.getElementById("chart"),
-{
-layout:{
-background:{color:"#111827"},
-textColor:"#ffffff"
-}
-});
-
-
-const candles = chart.addCandlestickSeries();
-
-
-let data=[];
-let price=100;
-
-
-function updateChart(){
-
-let open=price;
-
-let close=open+(Math.random()-0.5)*2;
-
-let high=Math.max(open,close)+Math.random();
-
-let low=Math.min(open,close)-Math.random();
-
-
-price=close;
-
-
-data.push({
-time:Math.floor(Date.now()/1000),
-open:open,
-high:high,
-low:low,
-close:close
-});
-
-
-candles.setData(data.slice(-60));
-
-
-document.getElementById("price").innerHTML=
-price.toFixed(3);
-
-}
-
-
-setInterval(updateChart,2000);
-
-
-
-let seconds=10;
-
-
-setInterval(()=>{
-
-seconds--;
-
-document.getElementById("timer").innerHTML=seconds;
-
-
-if(seconds<=0){
-seconds=10;
-}
-
-},1000);
-
-
-
-function placeTrade(direction){
-
-let result=document.getElementById("result");
-
-result.innerHTML=
-"Trade placed: BUY "+direction;
-
-
-setTimeout(()=>{
-
-let win=Math.random()>0.5;
-
-if(win){
-result.innerHTML="✅ Trade Won";
-}
-else{
-result.innerHTML="❌ Trade Lost";
-}
-
-},3000);
-
-}
-
-</script>
-
-
-</body>
-</html>
+<button class="down" onclick="
