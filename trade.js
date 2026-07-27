@@ -1,4 +1,4 @@
-// ===== TRJ Binary Demo Chart =====
+alert("trade.js loaded");
 
 const chart = LightweightCharts.createChart(
     document.getElementById("chart"),
