@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TRJ Binary Trade</title>
+<title>TRJ Binary</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -21,27 +20,17 @@ font-family:'Inter',sans-serif;
 body{
 background:#0b1220;
 color:#fff;
+overflow-x:hidden;
 }
 
-.topbar{
+header{
 height:60px;
-background:#121a2b;
+background:#141d2d;
 display:flex;
-align-items:center;
 justify-content:space-between;
-padding:0 16px;
-border-bottom:1px solid #1d2940;
-}
-
-.left{
-display:flex;
 align-items:center;
-gap:12px;
-}
-
-.menu{
-font-size:24px;
-cursor:pointer;
+padding:0 16px;
+border-bottom:1px solid #202c42;
 }
 
 .logo{
@@ -50,18 +39,12 @@ font-weight:700;
 color:#4f8cff;
 }
 
-.right{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
 .balance{
-background:#18253d;
+background:#1b2740;
 padding:8px 14px;
 border-radius:10px;
-font-weight:600;
 color:#57d98d;
+font-weight:600;
 }
 
 .deposit{
@@ -69,11 +52,42 @@ background:#2f7cff;
 padding:10px 16px;
 border-radius:10px;
 font-weight:600;
-cursor:pointer;
+margin-left:10px;
 }
 
-.content{
+.header-right{
+display:flex;
+align-items:center;
+}
+
+main{
 padding:16px;
+}
+
+.asset{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.asset-name{
+font-size:18px;
+font-weight:700;
+}
+
+.asset-price{
+font-size:32px;
+font-weight:700;
+color:#4fd3ff;
+margin-top:4px;
+}
+
+.live{
+background:#198754;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
 }
 
 </style>
@@ -82,19 +96,13 @@ padding:16px;
 
 <body>
 
-<div class="topbar">
-
-<div class="left">
-
-<div class="menu">☰</div>
+<header>
 
 <div class="logo">
 TRJ Binary
 </div>
 
-</div>
-
-<div class="right">
+<div class="header-right">
 
 <div class="balance">
 £1,000.00
@@ -106,29 +114,26 @@ Deposit
 
 </div>
 
+</header>
+
+<main>
+
+<div class="asset">
+
+<div>
+
+<div class="asset-name">
+BTC/USD
 </div>
 
-<div class="content">
-<div class="asset-card">
+<div class="asset-price" id="price">
+100.000
+</div>
 
-    <div class="asset-header">
+</div>
 
-        <div>
-
-            <div class="asset-name">
-                BTC/USD
-            </div>
-
-            <div class="asset-price" id="livePrice">
-                £100.000
-            </div>
-
-        </div>
-
-        <div class="asset-status">
-            ● Live
-        </div>
-
-    </div>
+<div class="live">
+● LIVE
+</div>
 
 </div>
