@@ -484,3 +484,13 @@ function addTrade(direction, stake, win){
     list.prepend(item);
 
 }
+window.addEventListener("resize", () => {
+    chart.applyOptions({
+        width: document.getElementById("chart").clientWidth
+    });
+});
+
+</script>
+
+</body>
+</html>
