@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TRJ Binary - Deposit</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Deposit Funds</title>
 </head>
 <body>
 
-<h1>TRJ Binary</h1>
-
-<a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a> |
-<a href="trade.html">Trade</a>
-
-<hr>
-
-<h2>Deposit Funds</h2>
+<h1>Deposit Funds</h1>
 
 <label>Amount (£)</label><br>
 <input type="number" placeholder="Enter amount"><br><br>
@@ -22,14 +13,27 @@
 <label>Payment Method</label><br>
 <select>
     <option>Bank Transfer</option>
+    <option>Visa / Mastercard</option>
     <option>Mobile Money</option>
-    <option>Visa</option>
-    <option>Mastercard</option>
+    <option>Crypto (USDT)</option>
 </select>
 
 <br><br>
 
-<button>Continue</button>
+<button onclick="submitDeposit()">Continue</button>
+
+<p id="message"></p>
+
+<script>
+function submitDeposit() {
+    document.getElementById("message").innerHTML =
+        "Deposit request submitted successfully.";
+}
+</script>
+
+<br><br>
+
+<a href="wallet.html">← Back to Wallet</a>
 
 </body>
 </html>
