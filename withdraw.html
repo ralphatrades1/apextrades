@@ -2,24 +2,48 @@
 <html>
 <head>
     <title>TRJ Binary - Withdraw</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<nav>
+<a href="dashboard.html">Dashboard</a> |
+<a href="wallet.html">Wallet</a> |
+<a href="trade.html">Trade</a> |
+<a href="history.html">History</a> |
+<a href="profile.html">Profile</a>
+</nav>
+
 <h1>Withdraw Funds</h1>
 
-<a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a>
+<div class="card">
 
-<hr>
+<h2>Request Withdrawal</h2>
 
-<label>Amount (£)</label><br>
+<label>Amount (£)</label>
 <input type="number" placeholder="Enter amount">
 
-<br><br>
+<label>Withdrawal Method</label>
+
+<select>
+<option>Bank Transfer</option>
+<option>Mobile Money</option>
+<option>USDT (Crypto)</option>
+</select>
+
+<br>
 
 <button>Request Withdrawal</button>
 
-<p>Your withdrawal requests will appear here.</p>
+</div>
+
+<div class="card">
+
+<h2>Withdrawal Status</h2>
+
+<p>No withdrawal requests yet.</p>
+
+</div>
 
 </body>
 </html>
