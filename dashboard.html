@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TRJ Binary - Dashboard</title>
+    <title>TRJ Binary Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<h1>TRJ Binary Dashboard</h1>
 
 <nav>
 <a href="dashboard.html">Dashboard</a> |
@@ -16,57 +14,39 @@
 <a href="profile.html">Profile</a>
 </nav>
 
-<hr>
+<h1>TRJ Binary</h1>
 
+<div class="card">
 <h2>Account Balance</h2>
 <h1>£0.00</h1>
-<p>Available for trading</p>
+<p>Available Balance</p>
+</div>
 
-<hr>
-
-<h2>Today's Profit</h2>
-<h1>£0.00</h1>
-<p>No trades yet</p>
-
-<hr>
-
-<h2>Open Trades</h2>
-<h1>0</h1>
-<p>No active trades</p>
-
-<hr>
-
+<div class="card">
 <h2>Quick Actions</h2>
 
-<p>
-<a href="deposit.html">
-<button>Deposit Funds</button>
-</a>
-</p>
+<p><a href="deposit.html"><button>Deposit</button></a></p>
 
-<p>
-<a href="wallet.html">
-<button>Wallet</button>
-</a>
-</p>
+<p><a href="withdraw.html"><button>Withdraw</button></a></p>
 
-<p>
-<a href="trade.html">
-<button>Start Trading</button>
-</a>
-</p>
+<p><a href="trade.html"><button>Trade Now</button></a></p>
 
-<p>
-<a href="history.html">
-<button>Trade History</button>
-</a>
-</p>
+<p><a href="history.html"><button>Trade History</button></a></p>
 
-<p>
-<a href="profile.html">
-<button>My Profile</button>
-</a>
-</p>
+</div>
+
+<div class="card">
+<h2>Market Status</h2>
+<p>Market: Open</p>
+<p>Available Contracts:</p>
+
+<ul>
+<li>Rise / Fall</li>
+<li>Even / Odd</li>
+<li>Match / Differs</li>
+</ul>
+
+</div>
 
 </body>
 </html>
