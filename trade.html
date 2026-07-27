@@ -1,223 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TRJ Trade</title>
+<title>TRJ Binary Trade</title>
 
-<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
 
 <style>
-body{
-    margin:0;
-    background:#08111f;
-    color:white;
-    font-family:Arial,sans-serif;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
-.header{
-    background:#111827;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
+body{
+background:#08111f;
+color:white;
+}
+
+header{
+height:65px;
+background:#101827;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:20px;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
 }
 
 .balance{
-    color:#22c55e;
+color:#22c55e;
+font-size:18px;
+font-weight:bold;
 }
 
 .container{
-    padding:15px;
+
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+padding:20px;
+
 }
 
-.card{
-    background:#111827;
-    padding:15px;
-    border-radius:15px;
-    margin-bottom:15px;
+.left{
+
+background:#111827;
+border-radius:15px;
+padding:20px;
+
+}
+
+.right{
+
+background:#111827;
+border-radius:15px;
+padding:20px;
+
+}
+
+.market{
+
+display:flex;
+justify-content:space-between;
+margin-bottom:15px;
+
+}
+
+.symbol{
+
+font-size:22px;
+font-weight:bold;
+
 }
 
 .price{
-    font-size:32px;
-    color:#38bdf8;
+
+font-size:32px;
+color:#38bdf8;
+font-weight:bold;
+
 }
 
 #chart{
-    height:300px;
+
+height:420px;
+
 }
 
-button{
-    padding:12px;
-    border:0;
-    border-radius:8px;
-    margin:5px;
-    color:white;
-    background:#1f2937;
+.section{
+
+margin-top:20px;
+
+}
+
+.section h3{
+
+margin-bottom:10px;
+
+}
+
+.select{
+
+width:100%;
+padding:12px;
+background:#1f2937;
+color:white;
+border:none;
+border-radius:10px;
+margin-bottom:15px;
+
 }
 
 input{
-    width:100%;
-    padding:12px;
-    border-radius:8px;
-    border:0;
+
+width:100%;
+padding:12px;
+background:#1f2937;
+color:white;
+border:none;
+border-radius:10px;
+margin-bottom:15px;
+
 }
 
-.up{
-    width:100%;
-    background:#16a34a;
+.buyup{
+
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#16a34a;
+color:white;
+font-size:18px;
+cursor:pointer;
+margin-bottom:10px;
+
 }
 
-.down{
-    width:100%;
-    background:#dc2626;
+.buydown{
+
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#dc2626;
+color:white;
+font-size:18px;
+cursor:pointer;
+
 }
 
 .timer{
-    text-align:center;
-    font-size:24px;
-    margin-top:15px;
+
+text-align:center;
+font-size:28px;
+margin-top:20px;
+
 }
+
+.result{
+
+text-align:center;
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+
+}
+
+.history{
+
+margin-top:30px;
+
+}
+
+.trade-item{
+
+padding:10px;
+background:#1f2937;
+border-radius:8px;
+margin-bottom:10px;
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="header">
-<h2>TRJ Trade</h2>
-<div class="balance">Balance: £1,000</div>
+<header>
+
+<div class="logo">
+
+TRJ Binary
+
 </div>
 
+<div class="balance">
+
+Balance £1000.00
+
+</div>
+
+</header>
 
 <div class="container">
 
-<div class="card">
-<h3>BTC/USD</h3>
-<div class="price" id="price">100.000</div>
+<div class="left">
+
+<div class="market">
+
+<div>
+
+<div class="symbol">
+
+BTC/USD
+
 </div>
 
+<div class="price" id="price">
 
-<div class="card">
-<h3>Live Chart</h3>
+100.000
+
+</div>
+
+</div>
+
+</div>
+
 <div id="chart"></div>
+
 </div>
 
+<div class="right">
 
-<div class="card">
+<div class="section">
 
-<h3>Trade Options</h3>
+<h3>Contract Type</h3>
 
-<button>Rise/Fall</button>
-<button>Even/Odd</button>
-<button>Match</button>
-<button>Differs</button>
+<select class="select" id="contract">
 
-<br>
+<option>Rise/Fall</option>
 
-<input type="number" placeholder="Stake amount">
+<option>Even/Odd</option>
 
+<option>Match/Differs</option>
 
-<button class="up" onclick="trade('UP')">
+</select>
+
+<h3>Stake</h3>
+
+<input
+type="number"
+id="stake"
+value="10">
+
+<button
+class="buyup"
+onclick="buy('UP')">
+
 🟢 BUY UP
+
 </button>
 
-<button class="down" onclick="trade('DOWN')">
+<button
+class="buydown"
+onclick="buy('DOWN')">
+
 🔴 BUY DOWN
-</button>
 
+</button>
 
 <div class="timer">
-Time: <span id="time">10</span>s
-</div>
+
+<span id="timer">
+
+10
+
+</span>s
 
 </div>
 
+<div
+class="result"
+id="result">
+
+Ready to trade
+
 </div>
 
+<div
+class="history"
+id="history">
 
-
-<script>
-
-const chart = LightweightCharts.createChart(
-document.getElementById("chart"),
-{
-width: window.innerWidth - 30,
-height:300
-}
-);
-
-
-const series = chart.addSeries(
-LightweightCharts.CandlestickSeries
-);
-
-
-let price = 100;
-
-let data=[];
-
-
-function candle(){
-
-let open=price;
-
-let close=open+(Math.random()-0.5);
-
-let high=Math.max(open,close)+0.5;
-
-let low=Math.min(open,close)-0.5;
-
-
-price=close;
-
-
-data.push({
-time:Math.floor(Date.now()/1000),
-open:open,
-high:high,
-low:low,
-close:close
-});
-
-
-series.setData(data.slice(-30));
-
-
-document.getElementById("price").innerHTML=
-price.toFixed(3);
-
-}
-
-
-setInterval(candle,2000);
-
-
-
-let t=10;
-
-setInterval(()=>{
-
-t--;
-
-document.getElementById("time").innerHTML=t;
-
-if(t<=0){
-t=10;
-}
-
-},1000);
-
-
-
-function trade(direction){
-
-alert("Trade placed: BUY "+direction);
-
-}
-
-</script>
-
-
-</body>
-</html>
+<h3>Trade History</h3>
