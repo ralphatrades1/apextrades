@@ -39,7 +39,19 @@ function buyTrade() {
 </script>
 
 <hr>
+<h2>Live Market</h2>
 
+<h1 id="price">100.00</h1>
+
+<script>
+let price = 100.00;
+
+setInterval(function () {
+    let change = (Math.random() - 0.5).toFixed(2);
+    price = (parseFloat(price) + parseFloat(change)).toFixed(2);
+    document.getElementById("price").innerHTML = price;
+}, 1000);
+</script>
 <h2>Open Trades</h2>
 <p>No active trades.</p>
 
