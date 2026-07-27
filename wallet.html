@@ -2,28 +2,65 @@
 <html>
 <head>
     <title>TRJ Binary - Wallet</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>TRJ Binary Wallet</h1>
-
+<nav>
 <a href="dashboard.html">Dashboard</a> |
+<a href="wallet.html">Wallet</a> |
 <a href="trade.html">Trade</a> |
-<a href="wallet.html">Wallet</a>
+<a href="history.html">History</a> |
+<a href="profile.html">Profile</a>
+</nav>
 
-<hr>
+<h1>Wallet</h1>
+
+<div class="card">
 
 <h2>Available Balance</h2>
 
 <h1>£0.00</h1>
 
-    <button onclick="window.location.href='deposit.html'">Deposit</button>
+<p>Your current trading balance.</p>
 
-<button onclick="window.location.href='withdraw.html'">Withdraw</button>
+<p>
+<a href="deposit.html">
+<button>Deposit</button>
+</a>
+</p>
 
-<h2>Transaction History</h2>
+<p>
+<a href="withdraw.html">
+<button>Withdraw</button>
+</a>
+</p>
 
-<p>No transactions yet.</p>
+</div>
+
+<div class="card">
+
+<h2>Recent Transactions</h2>
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>-</td>
+<td>No Transactions</td>
+<td>£0.00</td>
+<td>-</td>
+</tr>
+
+</table>
+
+</div>
 
 </body>
 </html>
