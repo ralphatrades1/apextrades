@@ -1,95 +1,63 @@
-alert("trade.js loaded");
+const chartContainer = document.getElementById("chart");
 
-const chart = LightweightCharts.createChart(
-    document.getElementById("chart"),
-    {
-        width: document.getElementById("chart").clientWidth,
-        height: 380,
-        layout: {
-            background: { color: "#0f172a" },
-            textColor: "#ffffff"
-        },
-        grid: {
-            vertLines: { color: "#1f2937" },
-            horzLines: { color: "#1f2937" }
-        },
-        rightPriceScale: {
-            borderColor: "#374151"
-        },
-        timeScale: {
-            borderColor: "#374151",
-            timeVisible: true
-        }
+const chart = LightweightCharts.createChart(chartContainer, {
+    width: chartContainer.clientWidth,
+    height: 350,
+    layout: {
+        background: { color: "#111827" },
+        textColor: "#ffffff"
+    },
+    grid: {
+        vertLines: { color: "#1f2937" },
+        horzLines: { color: "#1f2937" }
     }
-);
+});
 
-const series = chart.addCandlestickSeries();
+const lineSeries = chart.addSeries(LightweightCharts.LineSeries, {
+    color: "#3b82f6",
+    lineWidth: 2
+});
 
-let currentPrice = 100;
-let candles = [];
+let price = 100;
+let data = [];
 
 function updateChart() {
+    price += (Math.random() - 0.5) * 2;
 
-    const open = currentPrice;
-    const close = open + (Math.random() - 0.5) * 2;
-    const high = Math.max(open, close) + Math.random();
-    const low = Math.min(open, close) - Math.random();
-
-    currentPrice = close;
-
-    candles.push({
+    data.push({
         time: Math.floor(Date.now() / 1000),
-        open,
-        high,
-        low,
-        close
+        value: Number(price.toFixed(3))
     });
 
-    if (candles.length > 100) {
-        candles.shift();
+    if (data.length > 100) {
+        data.shift();
     }
 
-    series.setData(candles);
+    lineSeries.setData(data);
 
-    document.getElementById("price").textContent =
-        currentPrice.toFixed(3);
+    document.getElementById("price").textContent = price.toFixed(3);
 }
 
 updateChart();
 setInterval(updateChart, 1000);
 
-// ===== Resize Chart =====
-
 window.addEventListener("resize", () => {
     chart.applyOptions({
-        width: document.getElementById("chart").clientWidth
+        width: chartContainer.clientWidth
     });
 });
 
-// ===== Quick Stake Buttons =====
-
-document.querySelectorAll(".quick button").forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        const value = btn.textContent.replace("£", "");
-
-        document.getElementById("stake").value = value;
-
-    });
-
+document.querySelectorAll(".quick button").forEach(button => {
+    button.onclick = () => {
+        document.getElementById("stake").value =
+            button.textContent.replace("£", "");
+    };
 });
 
-// ===== Demo Trade Buttons =====
+document.querySelector(".buy-up").onclick = () => {
+    alert("BUY UP (Demo)");
+};
 
-document.querySelector(".buy-up").addEventListener("click", () => {
-
-    alert("BUY UP order placed (demo)");
-
-});
-
-document.querySelector(".buy-down").addEventListener("click", () => {
-
-    alert("BUY DOWN order placed (demo)");
-
-});
+document.querySelector(".buy-down").onclick = () => {
+    alert("BUY DOWN (Demo)");
+};
