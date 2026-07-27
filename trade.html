@@ -18,9 +18,15 @@
 
 <div class="card">
 
-<h2>Market</h2>
+<h2>Live Market</h2>
 
-<select>
+<h1 id="price">100.00</h1>
+
+<p>Status: 🟢 Live</p>
+
+<label>Select Market</label>
+
+<select id="market">
 <option>Rise / Fall</option>
 <option>Even / Odd</option>
 <option>Match / Differs</option>
@@ -28,20 +34,25 @@
 
 <br><br>
 
-<h2>Live Market Price</h2>
+<label>Stake (£)</label>
 
-<h1 id="price">100.00</h1>
+<input id="stake" type="number" placeholder="Enter amount">
 
-<label>Stake (£)</label><br>
-<input id="stake" type="number" placeholder="10">
+<br>
 
-<br><br>
+<button onclick="buy('BUY UP')">BUY UP</button>
 
-<button onclick="buyUp()">BUY UP</button>
-
-<button onclick="buyDown()">BUY DOWN</button>
+<button onclick="buy('BUY DOWN')">BUY DOWN</button>
 
 <p id="result"></p>
+
+</div>
+
+<div class="card">
+
+<h2>Current Balance</h2>
+
+<h1>£0.00</h1>
 
 </div>
 
@@ -58,31 +69,22 @@ price.toFixed(2);
 
 },1000);
 
-function buyUp(){
+function buy(type){
 
 let stake=document.getElementById("stake").value;
 
 if(stake==""){
-alert("Enter a stake");
+alert("Enter a stake amount");
 return;
 }
 
-document.getElementById("result").innerHTML=
-"Trade submitted: BUY UP (£"+stake+")";
+let market=document.getElementById("market").value;
 
-}
-
-function buyDown(){
-
-let stake=document.getElementById("stake").value;
-
-if(stake==""){
-alert("Enter a stake");
-return;
-}
-
-document.getElementById("result").innerHTML=
-"Trade submitted: BUY DOWN (£"+stake+")";
+document.getElementById("result").innerHTML =
+"Trade Submitted<br><br>" +
+"Type: " + type + "<br>" +
+"Market: " + market + "<br>" +
+"Stake: £" + stake;
 
 }
 
