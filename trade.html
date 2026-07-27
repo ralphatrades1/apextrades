@@ -7,7 +7,7 @@
 
 <title>TRJ Binary Trade</title>
 
-<script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,191 +15,65 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
-background:#08111f;
-color:white;
+background:#0b1220;
+color:#fff;
 }
 
-header{
-height:65px;
-background:#101827;
+.topbar{
+height:60px;
+background:#121a2b;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:20px;
-}
-
-.logo{
-font-size:24px;
-font-weight:bold;
-}
-
-.balance{
-color:#22c55e;
-font-size:18px;
-font-weight:bold;
-}
-
-.container{
-
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-padding:20px;
-
+padding:0 16px;
+border-bottom:1px solid #1d2940;
 }
 
 .left{
+display:flex;
+align-items:center;
+gap:12px;
+}
 
-background:#111827;
-border-radius:15px;
-padding:20px;
+.menu{
+font-size:24px;
+cursor:pointer;
+}
 
+.logo{
+font-size:20px;
+font-weight:700;
+color:#4f8cff;
 }
 
 .right{
-
-background:#111827;
-border-radius:15px;
-padding:20px;
-
-}
-
-.market{
-
 display:flex;
-justify-content:space-between;
-margin-bottom:15px;
-
+align-items:center;
+gap:12px;
 }
 
-.symbol{
-
-font-size:22px;
-font-weight:bold;
-
-}
-
-.price{
-
-font-size:32px;
-color:#38bdf8;
-font-weight:bold;
-
-}
-
-#chart{
-
-height:420px;
-
-}
-
-.section{
-
-margin-top:20px;
-
-}
-
-.section h3{
-
-margin-bottom:10px;
-
-}
-
-.select{
-
-width:100%;
-padding:12px;
-background:#1f2937;
-color:white;
-border:none;
+.balance{
+background:#18253d;
+padding:8px 14px;
 border-radius:10px;
-margin-bottom:15px;
-
+font-weight:600;
+color:#57d98d;
 }
 
-input{
-
-width:100%;
-padding:12px;
-background:#1f2937;
-color:white;
-border:none;
+.deposit{
+background:#2f7cff;
+padding:10px 16px;
 border-radius:10px;
-margin-bottom:15px;
-
-}
-
-.buyup{
-
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-background:#16a34a;
-color:white;
-font-size:18px;
+font-weight:600;
 cursor:pointer;
-margin-bottom:10px;
-
 }
 
-.buydown{
-
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-background:#dc2626;
-color:white;
-font-size:18px;
-cursor:pointer;
-
-}
-
-.timer{
-
-text-align:center;
-font-size:28px;
-margin-top:20px;
-
-}
-
-.result{
-
-text-align:center;
-margin-top:15px;
-font-size:18px;
-font-weight:bold;
-
-}
-
-.history{
-
-margin-top:30px;
-
-}
-
-.trade-item{
-
-padding:10px;
-background:#1f2937;
-border-radius:8px;
-margin-bottom:10px;
-
-}
-
-@media(max-width:900px){
-
-.container{
-
-grid-template-columns:1fr;
-
-}
-
+.content{
+padding:16px;
 }
 
 </style>
@@ -208,289 +82,30 @@ grid-template-columns:1fr;
 
 <body>
 
-<header>
-
-<div class="logo">
-
-TRJ Binary
-
-</div>
-
-<div class="balance">
-
-Balance £1000.00
-
-</div>
-
-</header>
-
-<div class="container">
+<div class="topbar">
 
 <div class="left">
 
-<div class="market">
+<div class="menu">☰</div>
 
-<div>
-
-<div class="symbol">
-
-BTC/USD
-
+<div class="logo">
+TRJ Binary
 </div>
-
-<div class="price" id="price">
-
-100.000
-
-</div>
-
-</div>
-
-</div>
-
-<div id="chart"></div>
 
 </div>
 
 <div class="right">
 
-<div class="section">
-
-<h3>Contract Type</h3>
-
-<select class="select" id="contract">
-
-<option>Rise/Fall</option>
-
-<option>Even/Odd</option>
-
-<option>Match/Differs</option>
-
-</select>
-
-<h3>Stake</h3>
-
-<input
-type="number"
-id="stake"
-value="10">
-
-<button
-class="buyup"
-onclick="buy('UP')">
-
-🟢 BUY UP
-
-</button>
-
-<button
-class="buydown"
-onclick="buy('DOWN')">
-
-🔴 BUY DOWN
-
-</button>
-
-<div class="timer">
-
-<span id="timer">
-
-10
-
-</span>s
-
+<div class="balance">
+£1,000.00
 </div>
 
-<div
-class="result"
-id="result">
-
-Ready to trade
-
-</div>
-
-<div
-class="history"
-id="history">
-
-<h3>Trade History</h3>
-<div id="tradeList">
-
-<div class="trade-item">
-No trades yet
+<div class="deposit">
+Deposit
 </div>
 
 </div>
 
 </div>
 
-</div>
-
-</div>
-
-<script>
-
-const chart = LightweightCharts.createChart(
-document.getElementById("chart"),
-{
-width: document.getElementById("chart").clientWidth,
-height: 420,
-layout:{
-background:{
-color:"#111827"
-},
-textColor:"#ffffff"
-},
-grid:{
-vertLines:{
-color:"#1f2937"
-},
-horzLines:{
-color:"#1f2937"
-}
-},
-crosshair:{
-mode:1
-},
-rightPriceScale:{
-borderColor:"#374151"
-},
-timeScale:{
-borderColor:"#374151",
-timeVisible:true
-}
-}
-);
-
-const series = chart.addCandlestickSeries();
-
-let candles = [];
-let currentPrice = 100;
-
-function updateChart(){
-
-const open = currentPrice;
-
-const close =
-open + (Math.random()-0.5);
-
-const high =
-Math.max(open,close) + Math.random()*0.5;
-
-const low =
-Math.min(open,close) - Math.random()*0.5;
-
-currentPrice = close;
-
-candles.push({
-
-time:Math.floor(Date.now()/1000),
-
-open:open,
-
-high:high,
-
-low:low,
-
-close:close
-
-});
-
-if(candles.length>100){
-
-candles.shift();
-
-}
-
-series.setData(candles);
-
-document.getElementById("price").innerHTML =
-currentPrice.toFixed(3);
-
-}
-
-setInterval(updateChart,1000);
-
-updateChart();
-let timer = 10;
-
-setInterval(() => {
-
-    timer--;
-
-    document.getElementById("timer").textContent = timer;
-
-    if (timer <= 0) {
-        timer = 10;
-    }
-
-}, 1000);
-
-function buy(direction){
-
-    const stake =
-    document.getElementById("stake").value;
-
-    const result =
-    document.getElementById("result");
-
-    result.innerHTML =
-    "Trade opened: BUY " + direction;
-
-    setTimeout(()=>{
-
-        const win =
-        Math.random() > 0.5;
-
-        if(win){
-
-            result.innerHTML =
-            "✅ Trade Won";
-
-        }else{
-
-            result.innerHTML =
-            "❌ Trade Lost";
-
-        }
-
-        addTrade(
-            direction,
-            stake,
-            win
-        );
-
-    },3000);
-
-}
-
-function addTrade(direction, stake, win){
-
-    const list =
-    document.getElementById("tradeList");
-
-    const item =
-    document.createElement("div");
-
-    item.className =
-    "trade-item";
-
-    item.innerHTML =
-    "<strong>" + direction + "</strong> | Stake: £" +
-    stake +
-    " | " +
-    (win ? "✅ Won" : "❌ Lost");
-
-    list.prepend(item);
-
-}
-window.addEventListener("resize", () => {
-    chart.applyOptions({
-        width: document.getElementById("chart").clientWidth
-    });
-});
-
-</script>
-
-</body>
-</html>
+<div class="content">
