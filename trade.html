@@ -177,3 +177,98 @@ BTC/USD
 }
 
 </style>
+<div class="trade-panel">
+
+    <div class="tabs">
+
+        <button class="tab active">Rise/Fall</button>
+        <button class="tab">Even/Odd</button>
+        <button class="tab">Over/Under</button>
+        <button class="tab">Matches/Differs</button>
+
+    </div>
+
+    <label>Stake (£)</label>
+
+    <input
+        type="number"
+        id="stake"
+        value="10"
+        class="stake-input">
+
+    <div class="quick-stake">
+
+        <button>£1</button>
+        <button>£5</button>
+        <button>£10</button>
+        <button>£25</button>
+        <button>£50</button>
+
+    </div>
+
+</div>
+
+<style>
+
+.trade-panel{
+    background:#141d2d;
+    border:1px solid #202c42;
+    border-radius:16px;
+    padding:15px;
+    margin-top:18px;
+}
+
+.tabs{
+    display:flex;
+    overflow-x:auto;
+    gap:10px;
+    margin-bottom:16px;
+}
+
+.tab{
+    background:#1b2740;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:10px;
+    white-space:nowrap;
+    cursor:pointer;
+}
+
+.tab.active{
+    background:#2f7cff;
+}
+
+.trade-panel label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.stake-input{
+    width:100%;
+    padding:14px;
+    background:#1b2740;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    margin-bottom:14px;
+}
+
+.quick-stake{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+}
+
+.quick-stake button{
+    background:#1b2740;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+}
+
+</style>
