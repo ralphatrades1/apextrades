@@ -2,88 +2,91 @@
 <html>
 <head>
     <title>TRJ Binary - Trade</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<nav>
+<a href="dashboard.html">Dashboard</a> |
+<a href="wallet.html">Wallet</a> |
+<a href="trade.html">Trade</a> |
+<a href="history.html">History</a> |
+<a href="profile.html">Profile</a>
+</nav>
+
 <h1>TRJ Binary Trading</h1>
 
-<a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a>
+<div class="card">
 
-<hr>
-
-<h2>Select Market</h2>
+<h2>Market</h2>
 
 <select>
-    <option>Even / Odd</option>
-    <option>Rise / Fall</option>
-    <option>Match / Differs</option>
+<option>Rise / Fall</option>
+<option>Even / Odd</option>
+<option>Match / Differs</option>
 </select>
 
 <br><br>
 
-<label>Stake (£)</label><br>
-<input type="number" placeholder="Enter stake">
-
-<br><br>
-
-<button onclick="buyTrade()">BUY UP</button>
-
-<button onclick="buyTrade()">BUY DOWN</button>
-
-<p id="result"></p>
-
-<script>
-let balance = 1000;
-
-function buyTrade() {
-
-    let stake = document.querySelector("input").value;
-
-    if (stake == "") {
-        alert("Enter your stake.");
-        return;
-    }
-
-    if (stake > balance) {
-        alert("Insufficient balance.");
-        return;
-    }
-
-    balance = balance - stake;
-
-    let win = Math.random() > 0.5;
-
-    if (win) {
-        balance = balance + (Number(stake) * 2);
-
-        document.getElementById("result").innerHTML =
-        "✅ You Won!<br>Balance: £" + balance;
-    } else {
-
-        document.getElementById("result").innerHTML =
-        "❌ You Lost!<br>Balance: £" + balance;
-    }
-}
-</script>
-    
-
-<hr>
-<h2>Live Market</h2>
+<h2>Live Market Price</h2>
 
 <h1 id="price">100.00</h1>
 
-<script>
-let price = 100.00;
+<label>Stake (£)</label><br>
+<input id="stake" type="number" placeholder="10">
 
-setInterval(function () {
-    let change = (Math.random() - 0.5).toFixed(2);
-    price = (parseFloat(price) + parseFloat(change)).toFixed(2);
-    document.getElementById("price").innerHTML = price;
-}, 1000);
+<br><br>
+
+<button onclick="buyUp()">BUY UP</button>
+
+<button onclick="buyDown()">BUY DOWN</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+
+let price = 100;
+
+setInterval(function(){
+
+price += (Math.random()-0.5);
+
+document.getElementById("price").innerHTML =
+price.toFixed(2);
+
+},1000);
+
+function buyUp(){
+
+let stake=document.getElementById("stake").value;
+
+if(stake==""){
+alert("Enter a stake");
+return;
+}
+
+document.getElementById("result").innerHTML=
+"Trade submitted: BUY UP (£"+stake+")";
+
+}
+
+function buyDown(){
+
+let stake=document.getElementById("stake").value;
+
+if(stake==""){
+alert("Enter a stake");
+return;
+}
+
+document.getElementById("result").innerHTML=
+"Trade submitted: BUY DOWN (£"+stake+")";
+
+}
+
 </script>
-<h2>Open Trades</h2>
-<p>No active trades.</p>
 
 </body>
 </html>
