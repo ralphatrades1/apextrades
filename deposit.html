@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Deposit Funds</title>
+    <title>TRJ Binary - Deposit</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<nav>
+<a href="dashboard.html">Dashboard</a> |
+<a href="wallet.html">Wallet</a> |
+<a href="trade.html">Trade</a> |
+<a href="history.html">History</a> |
+<a href="profile.html">Profile</a>
+</nav>
+
 <h1>Deposit Funds</h1>
 
-<label>Amount (£)</label><br>
-<input type="number" placeholder="Enter amount"><br><br>
+<div class="card">
 
-<label>Payment Method</label><br>
+<h2>Make a Deposit</h2>
+
+<label>Amount (£)</label>
+<input type="number" placeholder="Enter amount">
+
+<label>Payment Method</label>
+
 <select>
-    <option>Bank Transfer</option>
-    <option>Visa / Mastercard</option>
-    <option>Mobile Money</option>
-    <option>Crypto (USDT)</option>
+<option>Bank Transfer</option>
+<option>Visa / Mastercard</option>
+<option>Mobile Money</option>
+<option>USDT (Crypto)</option>
 </select>
 
-<br><br>
+<br>
 
-<button onclick="submitDeposit()">Continue</button>
+<button>Continue</button>
 
-<p id="message"></p>
+</div>
 
-<script>
-function submitDeposit() {
-    document.getElementById("message").innerHTML =
-        "Deposit request submitted successfully.";
-}
-</script>
+<div class="card">
 
-<br><br>
+<h2>Deposit Status</h2>
 
-<a href="wallet.html">← Back to Wallet</a>
+<p>No deposit requests yet.</p>
+
+</div>
 
 </body>
 </html>
