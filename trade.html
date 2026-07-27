@@ -412,3 +412,75 @@ currentPrice.toFixed(3);
 setInterval(updateChart,1000);
 
 updateChart();
+let timer = 10;
+
+setInterval(() => {
+
+    timer--;
+
+    document.getElementById("timer").textContent = timer;
+
+    if (timer <= 0) {
+        timer = 10;
+    }
+
+}, 1000);
+
+function buy(direction){
+
+    const stake =
+    document.getElementById("stake").value;
+
+    const result =
+    document.getElementById("result");
+
+    result.innerHTML =
+    "Trade opened: BUY " + direction;
+
+    setTimeout(()=>{
+
+        const win =
+        Math.random() > 0.5;
+
+        if(win){
+
+            result.innerHTML =
+            "✅ Trade Won";
+
+        }else{
+
+            result.innerHTML =
+            "❌ Trade Lost";
+
+        }
+
+        addTrade(
+            direction,
+            stake,
+            win
+        );
+
+    },3000);
+
+}
+
+function addTrade(direction, stake, win){
+
+    const list =
+    document.getElementById("tradeList");
+
+    const item =
+    document.createElement("div");
+
+    item.className =
+    "trade-item";
+
+    item.innerHTML =
+    "<strong>" + direction + "</strong> | Stake: £" +
+    stake +
+    " | " +
+    (win ? "✅ Won" : "❌ Lost");
+
+    list.prepend(item);
+
+}
