@@ -2,55 +2,46 @@
 <html>
 <head>
     <title>TRJ Binary - Trade</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>TRJ Binary</h1>
+<h1>TRJ Binary Trading</h1>
 
-<nav>
 <a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a> |
-<a href="trade.html">Trade</a> |
-<a href="history.html">History</a> |
-<a href="profile.html">Profile</a>
-</nav>
+<a href="wallet.html">Wallet</a>
 
 <hr>
 
-<h2>Trade</h2>
-
-<div class="card">
-<h3>Market</h3>
+<h2>Select Market</h2>
 
 <select>
-    <option>Rise/Fall</option>
-    <option>Even/Odd</option>
-    <option>Match/Differs</option>
-    <option>Higher/Lower</option>
-    <option>Over/Under</option>
+    <option>Even / Odd</option>
+    <option>Rise / Fall</option>
+    <option>Match / Differs</option>
 </select>
 
 <br><br>
 
 <label>Stake (£)</label><br>
-<input type="number" placeholder="10">
+<input type="number" placeholder="Enter stake">
 
 <br><br>
 
-<label>Duration</label><br>
-<select>
-    <option>1 Minute</option>
-    <option>5 Minutes</option>
-    <option>15 Minutes</option>
-</select>
+<button onclick="buyTrade()">Buy Trade</button>
 
-<br><br>
+<p id="result"></p>
 
-<button>BUY UP</button>
-<button>BUY DOWN</button>
+<script>
+function buyTrade() {
+    document.getElementById("result").innerHTML =
+    "Trade placed successfully.";
+}
+</script>
 
-</div>
+<hr>
+
+<h2>Open Trades</h2>
+<p>No active trades.</p>
 
 </body>
 </html>
