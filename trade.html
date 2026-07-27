@@ -1,90 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TRJ Binary - Trade</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade</title>
+
+<script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+<style>
+body {
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0b1220;
+    color:white;
+}
+
+.header {
+    padding:20px;
+    background:#111827;
+    display:flex;
+    justify-content:space-between;
+}
+
+.balance {
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.container {
+    padding:15px;
+}
+
+.card {
+    background:#111827;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+#chart {
+    height:350px;
+}
+
+.price {
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+.options button {
+    padding:12px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#1f2937;
+    color:white;
+}
+
+input {
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:none;
+    margin-top:10px;
+}
+
+.buy {
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.up {
+    background:#16a34a;
+    color:white;
+}
+
+.down {
+    background:#dc2626;
+    color:white;
+}
+
+.timer {
+    text-align:center;
+    font-size:24px;
+    margin-top:10px;
+}
+</style>
 </head>
+
 <body>
 
-<nav>
-<a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a> |
-<a href="trade.html">Trade</a> |
-<a href="history.html">History</a> |
-<a href="profile.html">Profile</a>
-</nav>
+<div class="header">
+<h2>TRJ Trade</h2>
+<div class="balance">Balance: £1,000.00</div>
+</div>
 
-<h1>TRJ Binary Trading</h1>
+<div class="container">
 
 <div class="card">
-
-<h2>Live Market</h2>
-
-<h1 id="price">100.00</h1>
-
-<p>Status: 🟢 Live</p>
-
-<label>Select Market</label>
-
-<select id="market">
-<option>Rise / Fall</option>
-<option>Even / Odd</option>
-<option>Match / Differs</option>
-</select>
-
-<br><br>
-
-<label>Stake (£)</label>
-
-<input id="stake" type="number" placeholder="Enter amount">
-
-<br>
-
-<button onclick="buy('BUY UP')">BUY UP</button>
-
-<button onclick="buy('BUY DOWN')">BUY DOWN</button>
-
-<p id="result"></p>
-
+<h3>Live Price</h3>
+<div class="price" id="price">1.0000</div>
 </div>
 
 <div class="card">
+<h3>Market Chart</h3>
+<div id="chart"></div>
+</div>
 
-<h2>Current Balance</h2>
 
-<h1>£0.00</h1>
+<div class="card">
+<h3>Contract Type</h3>
+
+<div class="options">
+<button>Rise/Fall</button>
+<button>Even/Odd</button>
+<button>Match</button>
+<button>Differs</button>
+</div>
+
+<label>Stake Amount</label>
+<input type="number" placeholder="Enter stake">
+
+<button class="buy up" onclick="trade('UP')">
+🟢 BUY UP
+</button>
+
+<button class="buy down" onclick="trade('DOWN')">
+🔴 BUY DOWN
+</button>
+
+<div class="timer">
+Time: <span id="time">10</span>s
+</div>
 
 </div>
+
+</div>
+
 
 <script>
 
-let price = 100;
+const chart = LightweightCharts.createChart(
+document.getElementById('chart'),
+{
+layout:{
+background:{color:'#111827'},
+textColor:'#ffffff'
+},
+grid:{
+vertLines:{color:'#1f2937'},
+horzLines:{color:'#1f2937'}
+}
+});
 
-setInterval(function(){
 
-price += (Math.random()-0.5);
+const candleSeries = chart.addCandlestickSeries();
 
-document.getElementById("price").innerHTML =
-price.toFixed(2);
+
+let candles=[];
+
+let value=1;
+
+
+function generateCandle(){
+
+let open=value;
+
+let close=open+(Math.random()-0.5)/50;
+
+let high=Math.max(open,close)+Math.random()/100;
+
+let low=Math.min(open,close)-Math.random()/100;
+
+value=close;
+
+
+candles.push({
+time:Math.floor(Date.now()/1000),
+open,
+high,
+low,
+close
+});
+
+
+candleSeries.setData(candles.slice(-50));
+
+document.getElementById("price").innerHTML=value.toFixed(4);
+
+}
+
+
+setInterval(generateCandle,2000);
+
+
+let timer=10;
+
+setInterval(()=>{
+
+timer--;
+
+document.getElementById("time").innerHTML=timer;
+
+if(timer<=0){
+timer=10;
+}
 
 },1000);
 
-function buy(type){
 
-let stake=document.getElementById("stake").value;
 
-if(stake==""){
-alert("Enter a stake amount");
-return;
-}
+function trade(type){
 
-let market=document.getElementById("market").value;
-
-document.getElementById("result").innerHTML =
-"Trade Submitted<br><br>" +
-"Type: " + type + "<br>" +
-"Market: " + market + "<br>" +
-"Stake: £" + stake;
+alert("Trade placed: BUY "+type);
 
 }
 
