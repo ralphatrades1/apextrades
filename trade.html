@@ -32,9 +32,38 @@
 <p id="result"></p>
 
 <script>
+let balance = 1000;
+
 function buyTrade() {
-    document.getElementById("result").innerHTML =
-    "Trade placed successfully.";
+
+    let stake = document.querySelector("input").value;
+
+    if (stake == "") {
+        alert("Enter your stake.");
+        return;
+    }
+
+    if (stake > balance) {
+        alert("Insufficient balance.");
+        return;
+    }
+
+    balance = balance - stake;
+
+    let win = Math.random() > 0.5;
+
+    if (win) {
+        balance = balance + (Number(stake) * 2);
+
+        document.getElementById("result").innerHTML =
+        "✅ You Won!<br>Balance: £" + balance;
+    } else {
+
+        document.getElementById("result").innerHTML =
+        "❌ You Lost!<br>Balance: £" + balance;
+    }
+}
+</script>
 }
 </script>
 
