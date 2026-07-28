@@ -19,7 +19,9 @@
 <header class="topbar">
 
 <div class="logo">
+
 ApexTrades
+
 </div>
 
 <div class="account">
@@ -32,18 +34,9 @@ ApexTrades
 
 </header>
 
-<section class="trade-container">
+<div class="market-top">
 
-<div class="left-panel">
-
-<h2>Market</h2>
-
-<input
-type="text"
-id="searchMarket"
-placeholder="Search market...">
-
-<select id="market" size="20">
+<select id="market">
 
 <optgroup label="Forex">
 
@@ -62,7 +55,7 @@ placeholder="Search market...">
 
 <optgroup label="Crypto">
 
-<option>BTC/USD</option>
+<option selected>BTC/USD</option>
 <option>ETH/USD</option>
 <option>BNB/USD</option>
 <option>SOL/USD</option>
@@ -72,7 +65,7 @@ placeholder="Search market...">
 
 </optgroup>
 
-<optgroup label="Synthetic">
+<optgroup label="Volatility">
 
 <option>Volatility 10 Index</option>
 <option>Volatility 10 (1s)</option>
@@ -85,42 +78,47 @@ placeholder="Search market...">
 <option>Volatility 100 Index</option>
 <option>Volatility 100 (1s)</option>
 
-<option>Boom 300 Index</option>
-<option>Boom 500 Index</option>
-<option>Boom 600 Index</option>
-<option>Boom 900 Index</option>
-<option>Boom 1000 Index</option>
+</optgroup>
 
-<option>Crash 300 Index</option>
-<option>Crash 500 Index</option>
-<option>Crash 600 Index</option>
-<option>Crash 900 Index</option>
-<option>Crash 1000 Index</option>
+<optgroup label="Boom">
 
-<option>Jump 10 Index</option>
-<option>Jump 25 Index</option>
-<option>Jump 50 Index</option>
-<option>Jump 75 Index</option>
-<option>Jump 100 Index</option>
+<option>Boom 300</option>
+<option>Boom 500</option>
+<option>Boom 600</option>
+<option>Boom 900</option>
+<option>Boom 1000</option>
+
+</optgroup>
+
+<optgroup label="Crash">
+
+<option>Crash 300</option>
+<option>Crash 500</option>
+<option>Crash 600</option>
+<option>Crash 900</option>
+<option>Crash 1000</option>
+
+</optgroup>
+
+<optgroup label="Jump">
+
+<option>Jump 10</option>
+<option>Jump 25</option>
+<option>Jump 50</option>
+<option>Jump 75</option>
+<option>Jump 100</option>
+
+</optgroup>
+
+<optgroup label="Other">
 
 <option>Step Index</option>
-
 <option>Range Break 100</option>
 <option>Range Break 200</option>
 
 </optgroup>
 
 </select>
-
-</div>
-
-<div class="chart-panel">
-
-<div class="chart-header">
-
-<h2 id="selectedMarket">
-BTC/USD
-</h2>
 
 <select id="timeframe">
 
@@ -133,8 +131,17 @@ BTC/USD
 
 </div>
 
+<div class="chart-card">
+
+<h2 id="selectedMarket">
+
+BTC/USD
+
+</h2>
+
 <div id="chart"></div>
-<section class="trade-controls">
+
+</div>
 
 <div class="trade-card">
 
@@ -168,37 +175,27 @@ min="1">
 
 </div>
 
-<h3>Expected Payout</h3>
-
 <div class="payout">
 
-<strong>$1.95</strong>
+<h3>Expected Payout</h3>
 
-<p>Estimated return for a winning trade.</p>
+<h2>$1.95</h2>
 
 </div>
 
 <button class="buy-up">
+
 🟢 BUY UP
+
 </button>
 
 <button class="buy-down">
+
 🔴 BUY DOWN
+
 </button>
 
 </div>
-
-</section>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 ApexTrades. All Rights Reserved.</p>
-
-</footer>
 
 <script src="storage.js"></script>
 <script src="trade.js"></script>
@@ -206,4 +203,3 @@ min="1">
 </body>
 
 </html>
-</div>
