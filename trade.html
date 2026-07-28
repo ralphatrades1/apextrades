@@ -134,5 +134,76 @@ BTC/USD
 </div>
 
 <div id="chart"></div>
+<section class="trade-controls">
 
+<div class="trade-card">
+
+<h3>Contract Type</h3>
+
+<select id="contractType">
+
+<option>Rise/Fall</option>
+<option>Higher/Lower</option>
+<option>Even/Odd</option>
+<option>Over/Under</option>
+<option>Matches/Differs</option>
+
+</select>
+
+<h3>Stake (USD)</h3>
+
+<input
+type="number"
+id="stake"
+value="1"
+min="1">
+
+<div class="quick-stakes">
+
+<button>$1</button>
+<button>$5</button>
+<button>$10</button>
+<button>$25</button>
+<button>$50</button>
+
+</div>
+
+<h3>Expected Payout</h3>
+
+<div class="payout">
+
+<strong>$1.95</strong>
+
+<p>Estimated return for a winning trade.</p>
+
+</div>
+
+<button class="buy-up">
+🟢 BUY UP
+</button>
+
+<button class="buy-down">
+🔴 BUY DOWN
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 ApexTrades. All Rights Reserved.</p>
+
+</footer>
+
+<script src="storage.js"></script>
+<script src="trade.js"></script>
+
+</body>
+
+</html>
 </div>
