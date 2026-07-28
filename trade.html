@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ApexTrades</title>
+<title>ApexTrades | Trade</title>
 
 <link rel="stylesheet" href="trade.css">
 
 <script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
 </head>
 
 <body>
 
 <header class="topbar">
 
-    <div class="logo">
-        ApexTrades
-    </div>
+<div class="logo">
+ApexTrades
+</div>
 
-    <div class="top-right">
+<div class="top-right">
 
-        <div class="balance">
-            £1,000.00
-        </div>
+<div class="balance">
+$1,000.00
+</div>
 
-        <button class="deposit">
-            Deposit
-        </button>
+<button class="deposit">
+Deposit
+</button>
 
-    </div>
+</div>
 
 </header>
 
@@ -37,67 +39,84 @@
 
 <section class="market">
 
-    <div>
+<div>
 
-        <h2>BTC/USD</h2>
+<h2>BTC/USD</h2>
 
-        <div id="price">
-            100.000
-        </div>
+<div id="price">
+100.000
+</div>
 
-    </div>
+</div>
 
-    <div class="status">
-        ● LIVE
-    </div>
+<div class="status">
+● LIVE
+</div>
 
 </section>
 
 <section class="chart-card">
 
-    <div id="chart"></div>
+<div id="chart"></div>
 
 </section>
 
 <section class="contracts">
 
-    <button class="active">Rise/Fall</button>
+<button class="active">
+Rise/Fall
+</button>
 
-    <button>Even/Odd</button>
+<button>
+Even/Odd
+</button>
 
-    <button>Over/Under</button>
+<button>
+Over/Under
+</button>
 
-    <button>Matches/Differs</button>
+<button>
+Matches/Differs
+</button>
 
 </section>
 
 <section class="trade-box">
 
-    <label>Stake (£)</label>
+<label>Stake (USD)</label>
 
-    <input
-        type="number"
-        id="stake"
-        value="10"
-    >
+<input
+type="number"
+id="stake"
+value="1"
+min="1"
+>
 
-    <div class="quick">
+<p style="margin:10px 0;color:#9ca3af;">
+Minimum Stake: <strong>$1.00</strong>
+</p>
 
-        <button>£1</button>
-        <button>£5</button>
-        <button>£10</button>
-        <button>£25</button>
-        <button>£50</button>
+<div class="quick">
 
-    </div>
+<button>$1</button>
 
-    <button class="buy-up">
-        🟢 BUY UP
-    </button>
+<button>$5</button>
 
-    <button class="buy-down">
-        🔴 BUY DOWN
-    </button>
+<button>$10</button>
+
+<button>$25</button>
+
+<button>$50</button>
+
+</div>
+
+<button class="buy-up">
+🟢 BUY UP
+</button>
+
+<button class="buy-down">
+🔴 BUY DOWN
+</button>
 
 </section>
 
@@ -105,15 +124,15 @@
 
 <nav class="bottom-nav">
 
-    <button>Trade</button>
+<button>Trade</button>
 
-    <button>Wallet</button>
+<button>Wallet</button>
 
-    <button>History</button>
+<button>History</button>
 
-    <button>AI</button>
+<button>AI</button>
 
-    <button>Profile</button>
+<button>Profile</button>
 
 </nav>
 
