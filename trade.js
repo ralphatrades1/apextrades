@@ -1,20 +1,20 @@
-// ApexTrades Trading Engine
+// ApexTrades Trading Engine - Part 1
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
     initStorage();
 
-    updateBalance();
+    loadBalance();
 
-    setupMarketSearch();
+    quickStakeButtons();
+
+    marketSelector();
 
     createChart();
 
-    setupQuickStakeButtons();
-
 });
 
-function updateBalance(){
+function loadBalance(){
 
     const balance=document.getElementById("balance");
 
@@ -26,47 +26,48 @@ function updateBalance(){
 
 }
 
-function setupMarketSearch(){
+function quickStakeButtons(){
 
-    const search=document.getElementById("searchMarket");
+    const stake=document.getElementById("stake");
 
-    const market=document.getElementById("market");
+    document.querySelectorAll(".quick-stakes button").forEach(btn=>{
 
-    if(!search || !market) return;
+        btn.onclick=()=>{
 
-    search.addEventListener("keyup",function(){
+            stake.value=btn.innerText.replace("$","");
 
-        const filter=this.value.toLowerCase();
-
-        Array.from(market.options).forEach(function(option){
-
-            option.style.display=
-
-            option.text.toLowerCase().includes(filter)
-
-            ? ""
-
-            : "none";
-
-        });
+        };
 
     });
 
 }
 
+function marketSelector(){
+
+    const market=document.getElementById("market");
+
+    const title=document.getElementById("selectedMarket");
+
+    market.onchange=function(){
+
+        title.innerHTML=this.value;
+
+    };
+
+}
+
+let chart;
+let candleSeries;
+
 function createChart(){
 
-    const chartContainer=document.getElementById("chart");
+    const container=document.getElementById("chart");
 
-    if(!chartContainer) return;
+    chart=LightweightCharts.createChart(container,{
 
-    chartContainer.innerHTML="";
+        width:container.clientWidth,
 
-    const chart=LightweightCharts.createChart(chartContainer,{
-
-        width:chartContainer.clientWidth,
-
-        height:450,
+        height:container.clientHeight,
 
         layout:{
             background:{color:"#0d1117"},
@@ -74,55 +75,31 @@ function createChart(){
         },
 
         grid:{
-            vertLines:{color:"#222"},
-            horzLines:{color:"#222"}
+            vertLines:{color:"#20252d"},
+            horzLines:{color:"#20252d"}
+        },
+
+        rightPriceScale:{
+            borderColor:"#333"
+        },
+
+        timeScale:{
+            borderColor:"#333"
         }
 
     });
 
-    const series=chart.addAreaSeries({
+    candleSeries=chart.addCandlestickSeries();
 
-        lineColor:"#00d084",
+    generateCandles();
 
-        topColor:"rgba(0,208,132,0.4)",
+    window.addEventListener("resize",()=>{
 
-        bottomColor:"rgba(0,208,132,0.05)"
+        chart.applyOptions({
 
-    });
+            width:container.clientWidth,
 
-    series.setData([
-
-        {time:1,value:100},
-
-        {time:2,value:101},
-
-        {time:3,value:103},
-
-        {time:4,value:102},
-
-        {time:5,value:105},
-
-        {time:6,value:107},
-
-        {time:7,value:106},
-
-        {time:8,value:109}
-
-    ]);
-
-}
-
-function setupQuickStakeButtons(){
-
-    const buttons=document.querySelectorAll(".quick-stakes button");
-
-    const stake=document.getElementById("stake");
-
-    buttons.forEach(function(btn){
-
-        btn.addEventListener("click",function(){
-
-            stake.value=this.innerText.replace("$","");
+            height:container.clientHeight
 
         });
 
@@ -130,66 +107,78 @@ function setupQuickStakeButtons(){
 
 }
 
-function executeTrade(direction){
+function generateCandles(){
 
-    const stake=Number(document.getElementById("stake").value);
+    let data=[];
 
-    if(stake<1){
+    let price=100;
 
-        alert("Minimum stake is $1.00");
+    let time=Math.floor(Date.now()/1000)-100;
 
-        return;
+    for(let i=0;i<100;i++){
+
+        let open=price;
+
+        let close=open+(Math.random()-0.5)*3;
+
+        let high=Math.max(open,close)+Math.random()*1.5;
+
+        let low=Math.min(open,close)-Math.random()*1.5;
+
+        data.push({
+
+            time:time+i,
+
+            open:open,
+
+            high:high,
+
+            low:low,
+
+            close:close
+
+        });
+
+        price=close;
 
     }
 
-    if(stake>getBalance()){
+    candleSeries.setData(data);
 
-        alert("Insufficient balance");
+    setInterval(()=>{
 
-        return;
+        const last=data[data.length-1];
 
-    }
+        const open=last.close;
 
-    setBalance(getBalance()-stake);
+        const close=open+(Math.random()-0.5)*3;
 
-    updateBalance();
+        const high=Math.max(open,close)+Math.random()*1.5;
 
-    setTimeout(function(){
+        const low=Math.min(open,close)-Math.random()*1.5;
 
-        const win=Math.random()>0.5;
+        data.push({
 
-        if(win){
+            time:last.time+1,
 
-            const payout=stake*1.95;
+            open:open,
 
-            setBalance(getBalance()+payout);
+            high:high,
 
-            alert("🎉 Trade Won! +$"+payout.toFixed(2));
+            low:low,
 
-        }else{
+            close:close
 
-            alert("❌ Trade Lost");
+        });
+
+        if(data.length>120){
+
+            data.shift();
 
         }
 
-        updateBalance();
+        candleSeries.setData(data);
 
-    },3000);
+    },1000);
 
 }
-
-document.addEventListener("click",function(e){
-
-    if(e.target.classList.contains("buy-up")){
-
-        executeTrade("UP");
-
-    }
-
-    if(e.target.classList.contains("buy-down")){
-
-        executeTrade("DOWN");
-
-    }
-
-});
