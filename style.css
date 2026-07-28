@@ -1,20 +1,38 @@
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:Arial,sans-serif;
     background:#0d1117;
     color:#ffffff;
 }
 
-nav{
+header{
     background:#161b22;
-    padding:15px;
+    padding:18px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#00d084;
     text-align:center;
+    margin-bottom:15px;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
 nav a{
     color:#00d084;
     text-decoration:none;
-    margin:0 10px;
     font-weight:bold;
 }
 
@@ -22,56 +40,71 @@ nav a:hover{
     color:#ffffff;
 }
 
+.hero{
+    padding:30px 20px;
+}
+
+.hero h1{
+    color:#00d084;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#cccccc;
+}
+
+.markets{
+    padding:0 20px 20px;
+}
+
 .card{
     background:#161b22;
-    margin:20px;
-    padding:20px;
     border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
     box-shadow:0 4px 10px rgba(0,0,0,.4);
 }
 
-h1,h2{
+.card h2,
+.card h3{
     color:#00d084;
+    margin-bottom:15px;
 }
 
-button{
-    background:#00d084;
-    color:#fff;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
+label{
+    display:block;
+    margin-bottom:8px;
 }
 
-button:hover{
-    background:#00b36b;
-}
-
-input,select{
+input,
+select{
     width:100%;
     padding:12px;
-    margin-top:8px;
-    margin-bottom:15px;
     border:1px solid #333;
     border-radius:8px;
     background:#1f2937;
     color:#fff;
-    box-sizing:border-box;
+    margin-bottom:20px;
 }
 
-table{
+.btn{
     width:100%;
-    border-collapse:collapse;
-}
-
-th{
+    padding:15px;
     background:#00d084;
     color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-th,td{
-    border:1px solid #333;
-    padding:10px;
+.btn:hover{
+    background:#00b36b;
+}
+
+footer{
     text-align:center;
+    padding:20px;
+    color:#999999;
 }
