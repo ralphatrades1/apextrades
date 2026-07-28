@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ApexTrades | Withdraw</title>
@@ -17,20 +15,13 @@
 
 <header>
 
-<div class="logo">
-ApexTrades
-</div>
+<div class="logo">ApexTrades</div>
 
 <nav>
-
 <a href="dashboard.html">Dashboard</a>
-
 <a href="trade.html">Trade</a>
-
 <a href="wallet.html">Wallet</a>
-
 <a href="profile.html">Profile</a>
-
 </nav>
 
 </header>
@@ -49,7 +40,7 @@ ApexTrades
 
 <h3>Available Balance</h3>
 
-<p><strong>$1,000.00</strong></p>
+<p id="balance">$1000.00</p>
 
 </div>
 
@@ -57,7 +48,7 @@ ApexTrades
 
 <h3>Minimum Withdrawal</h3>
 
-<p><strong>$1.00</strong></p>
+<p>$1.00</p>
 
 </div>
 
@@ -65,45 +56,38 @@ ApexTrades
 
 <section class="markets">
 
-<h2>Withdrawal Details</h2>
-
 <div class="card">
 
-<label>Amount (USD)</label>
+<h2>Request a Withdrawal</h2>
+
+<label>Withdrawal Amount (USD)</label>
 
 <input
 type="number"
+id="amount"
 min="1"
-value="1"
-placeholder="Enter withdrawal amount">
-
-<br><br>
+value="1">
 
 <label>Withdrawal Method</label>
 
-<select>
+<select id="withdrawMethod">
 
+<option>Mobile Money (M-Pesa)</option>
 <option>USDT (TRC20)</option>
-
 <option>Bitcoin (BTC)</option>
-
 <option>Ethereum (ETH)</option>
-
 <option>Bank Transfer</option>
 
 </select>
 
-<br><br>
-
-<label>Wallet Address / Account</label>
+<label>Phone Number / Wallet Address / Bank Account</label>
 
 <input
 type="text"
-placeholder="Enter wallet address or bank account">
+id="destination"
+placeholder="Enter M-Pesa number, wallet address or bank account">
 
-<br><br>
-
-<button class="btn">
+<button class="btn" onclick="withdrawMoney()">
 Withdraw Now
 </button>
 
@@ -117,6 +101,38 @@ Withdraw Now
 
 </footer>
 
-</body>
+<script src="storage.js"></script>
 
+<script>
+
+document.getElementById("balance").innerHTML =
+"$" + getBalance().toFixed(2);
+
+function withdrawMoney(){
+
+const amount =
+Number(document.getElementById("amount").value);
+
+if(amount < 1){
+alert("Minimum withdrawal is $1.00");
+return;
+}
+
+if(amount > getBalance()){
+alert("Insufficient balance.");
+return;
+}
+
+addWithdrawal(amount);
+
+document.getElementById("balance").innerHTML =
+"$" + getBalance().toFixed(2);
+
+alert("Withdrawal request submitted successfully!");
+
+}
+
+</script>
+
+</body>
 </html>
