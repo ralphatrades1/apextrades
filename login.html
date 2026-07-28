@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>TRJ Binary - Login</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ApexTrades | Login</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<h1>TRJ Binary</h1>
-<h2>Login</h2>
+<div class="login-container">
 
-<form>
-    <label>Email</label><br>
-    <input type="email"><br><br>
+<h1>ApexTrades</h1>
 
-    <label>Password</label><br>
-    <input type="password"><br><br>
+<h2>Welcome Back</h2>
 
-    <button type="button" onclick="login()">Login</button>
+<p>Sign in to your trading account.</p>
+
+<form action="dashboard.html">
+
+<input
+type="email"
+placeholder="Email Address"
+required>
+
+<input
+type="password"
+placeholder="Password"
+required>
+
+<button type="submit" class="btn">
+Login
+</button>
+
 </form>
 
-<br>
+<p>
 
-<a href="signup.html">Create an account</a>
-<script>
-function login() {
-    window.location.href = "dashboard.html";
-}
-</script>
+Don't have an account?
+
+<a href="signup.html">Create Account</a>
+
+</p>
+
+</div>
 
 </body>
+
 </html>
