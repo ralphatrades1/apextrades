@@ -1,49 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>TRJ Binary - Withdraw</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ApexTrades | Withdraw</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
+<header>
+
+<div class="logo">
+ApexTrades
+</div>
+
 <nav>
-<a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a> |
-<a href="trade.html">Trade</a> |
-<a href="history.html">History</a> |
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="trade.html">Trade</a>
+
+<a href="wallet.html">Wallet</a>
+
 <a href="profile.html">Profile</a>
+
 </nav>
+
+</header>
+
+<section class="hero">
 
 <h1>Withdraw Funds</h1>
 
+<p>Withdraw your funds securely from your ApexTrades account.</p>
+
+</section>
+
+<section class="markets">
+
 <div class="card">
 
-<h2>Request Withdrawal</h2>
+<h3>Available Balance</h3>
 
-<label>Amount (£)</label>
-<input type="number" placeholder="Enter amount">
+<p><strong>$1,000.00</strong></p>
+
+</div>
+
+<div class="card">
+
+<h3>Minimum Withdrawal</h3>
+
+<p><strong>$1.00</strong></p>
+
+</div>
+
+</section>
+
+<section class="markets">
+
+<h2>Withdrawal Details</h2>
+
+<div class="card">
+
+<label>Amount (USD)</label>
+
+<input
+type="number"
+min="1"
+value="1"
+placeholder="Enter withdrawal amount">
+
+<br><br>
 
 <label>Withdrawal Method</label>
 
 <select>
+
+<option>USDT (TRC20)</option>
+
+<option>Bitcoin (BTC)</option>
+
+<option>Ethereum (ETH)</option>
+
 <option>Bank Transfer</option>
-<option>Mobile Money</option>
-<option>USDT (Crypto)</option>
+
 </select>
 
-<br>
+<br><br>
 
-<button>Request Withdrawal</button>
+<label>Wallet Address / Account</label>
+
+<input
+type="text"
+placeholder="Enter wallet address or bank account">
+
+<br><br>
+
+<button class="btn">
+Withdraw Now
+</button>
 
 </div>
 
-<div class="card">
+</section>
 
-<h2>Withdrawal Status</h2>
+<footer>
 
-<p>No withdrawal requests yet.</p>
+<p>© 2026 ApexTrades. All Rights Reserved.</p>
 
-</div>
+</footer>
 
 </body>
+
 </html>
