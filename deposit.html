@@ -1,50 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>TRJ Binary - Deposit</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ApexTrades | Deposit</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
+<header>
+
+<div class="logo">
+ApexTrades
+</div>
+
 <nav>
-<a href="dashboard.html">Dashboard</a> |
-<a href="wallet.html">Wallet</a> |
-<a href="trade.html">Trade</a> |
-<a href="history.html">History</a> |
+
+<a href="dashboard.html">Dashboard</a>
+<a href="trade.html">Trade</a>
+<a href="wallet.html">Wallet</a>
 <a href="profile.html">Profile</a>
+
 </nav>
 
+</header>
+
+<section class="hero">
+
 <h1>Deposit Funds</h1>
+
+<p>Fund your ApexTrades account quickly and securely.</p>
+
+</section>
+
+<section class="markets">
+
+<div class="card">
+
+<h3>Minimum Deposit</h3>
+
+<p><strong>$1.00</strong></p>
+
+</div>
+
+<div class="card">
+
+<h3>Current Balance</h3>
+
+<p><strong>$1,000.00</strong></p>
+
+</div>
+
+</section>
+
+<section class="markets">
 
 <div class="card">
 
 <h2>Make a Deposit</h2>
 
-<label>Amount (£)</label>
-<input type="number" placeholder="Enter amount">
+<label>Deposit Amount (USD)</label>
 
-<label>Payment Method</label>
+<input
+type="number"
+min="1"
+value="1"
+placeholder="Enter amount">
+
+<br><br>
+
+<label>Select Payment Method</label>
 
 <select>
-<option>Bank Transfer</option>
-<option>Visa / Mastercard</option>
-<option>Mobile Money</option>
-<option>USDT (Crypto)</option>
+
+<option>USDT (TRC20)</option>
+<option>Bitcoin (BTC)</option>
+<option>Ethereum (ETH)</option>
+<option>Binance Pay</option>
+
 </select>
+
+<br><br>
+
+<p><strong>Minimum Deposit:</strong> $1.00</p>
 
 <br>
 
-<button>Continue</button>
+<button class="btn">
+Deposit Now
+</button>
 
 </div>
 
-<div class="card">
+</section>
 
-<h2>Deposit Status</h2>
+<footer>
 
-<p>No deposit requests yet.</p>
+<p>© 2026 ApexTrades. All Rights Reserved.</p>
 
-</div>
+</footer>
 
 </body>
+
 </html>
