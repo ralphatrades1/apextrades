@@ -1,64 +1,174 @@
-.trade-page {
-  width: 100%;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  background: #0b0f17;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.trade-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
+body{
+background:#0d1117;
+color:#ffffff;
+font-family:Arial,sans-serif;
 }
 
-/* Hide market list for full screen chart */
-.market-panel {
-  display: none;
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:#161b22;
+border-bottom:1px solid #222;
 }
 
-/* Full screen chart */
-.chart-section {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#00d084;
 }
 
-.chart-header {
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.account{
+text-align:right;
 }
 
-.chart-box {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  background: #080c14;
+.account span{
+font-size:12px;
+color:#999;
 }
 
-/* Floating trading controls */
-.trade-controls {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  width: 320px;
-  background: #1b2433;
-  border-radius: 15px;
-  padding: 20px;
-  z-index: 10;
+.account h2{
+color:#00d084;
+margin-top:5px;
 }
 
-/* Bigger chart on mobile */
-@media (max-width: 768px) {
-  .trade-controls {
-    width: calc(100% - 40px);
-    left: 20px;
-    right: 20px;
-    bottom: 15px;
-  }
+.market-top{
+display:flex;
+gap:10px;
+padding:15px;
+background:#161b22;
+}
+
+.market-top select{
+flex:1;
+padding:12px;
+background:#1f2937;
+color:#fff;
+border:1px solid #333;
+border-radius:8px;
+font-size:15px;
+}
+
+.chart-card{
+margin:15px;
+background:#161b22;
+border-radius:15px;
+padding:15px;
+}
+
+.chart-card h2{
+margin-bottom:15px;
+color:#00d084;
+}
+
+#chart{
+width:100%;
+height:75vh;
+background:#0d1117;
+border-radius:12px;
+}
+
+.trade-card{
+margin:15px;
+background:#161b22;
+border-radius:15px;
+padding:20px;
+}
+
+.trade-card h3{
+margin-bottom:10px;
+color:#00d084;
+}
+
+.trade-card input,
+.trade-card select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+background:#1f2937;
+color:white;
+border:1px solid #333;
+border-radius:8px;
+}
+
+.quick-stakes{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:8px;
+margin-bottom:20px;
+}
+
+.quick-stakes button{
+padding:12px;
+background:#222;
+color:#fff;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.quick-stakes button:hover{
+background:#00d084;
+}
+
+.payout{
+background:#1f2937;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
+text-align:center;
+}
+
+.buy-up,
+.buy-down{
+width:100%;
+padding:16px;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:12px;
+}
+
+.buy-up{
+background:#00c853;
+color:white;
+}
+
+.buy-down{
+background:#d50000;
+color:white;
+}
+
+.buy-up:hover{
+background:#00b248;
+}
+
+.buy-down:hover{
+background:#b00020;
+}
+
+@media(max-width:768px){
+
+.market-top{
+flex-direction:column;
+}
+
+.quick-stakes{
+grid-template-columns:repeat(3,1fr);
+}
+
+#chart{
+height:65vh;
+}
+
 }
