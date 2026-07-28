@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -19,12 +18,10 @@
 <div class="logo">ApexTrades</div>
 
 <nav>
-
 <a href="dashboard.html">Dashboard</a>
 <a href="trade.html">Trade</a>
 <a href="wallet.html">Wallet</a>
 <a href="profile.html">Profile</a>
-
 </nav>
 
 </header>
@@ -69,14 +66,66 @@
 type="number"
 id="amount"
 min="1"
-value="1">
+value="1"
+placeholder="Enter amount">
 
 <br><br>
 
 <label>Payment Method</label>
 
-<select>
+<select id="paymentMethod">
 
+<option>Mobile Money (M-Pesa)</option>
 <option>USDT (TRC20)</option>
 <option>Bitcoin (BTC)</option>
-<option>Ethereum (
+<option>Ethereum (ETH)</option>
+<option>Binance Pay</option>
+
+</select>
+
+<br><br>
+
+<button class="btn" onclick="depositMoney()">
+Deposit Now
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 ApexTrades. All Rights Reserved.</p>
+
+</footer>
+
+<script src="storage.js"></script>
+
+<script>
+
+document.getElementById("balance").innerHTML =
+"$" + getBalance().toFixed(2);
+
+function depositMoney(){
+
+const amount =
+Number(document.getElementById("amount").value);
+
+if(amount < 1){
+alert("Minimum deposit is $1.00");
+return;
+}
+
+addDeposit(amount);
+
+document.getElementById("balance").innerHTML =
+"$" + getBalance().toFixed(2);
+
+alert("Deposit successful!");
+
+}
+
+</script>
+
+</body>
+</html>
