@@ -1,75 +1,21 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial,sans-serif;
-background:#0d1117;
-color:#fff;
-}
-
-.topbar{
-background:#161b22;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-border-bottom:1px solid #222;
-}
-
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#00d084;
-}
-
-.account{
-text-align:right;
-}
-
-.account span{
-font-size:13px;
-color:#aaa;
-}
-
-.account h2{
-color:#00d084;
-margin-top:5px;
-}
-
 .trade-container{
-display:flex;
+display:grid;
+grid-template-columns:240px 1fr;
 gap:20px;
 padding:20px;
+align-items:start;
 }
 
 .left-panel{
-width:300px;
-background:#161b22;
-padding:20px;
-border-radius:15px;
-}
-
-.left-panel h2{
-color:#00d084;
-margin-bottom:15px;
-}
-
-.left-panel input{
 width:100%;
-padding:12px;
-margin-bottom:15px;
-background:#1f2937;
-border:1px solid #333;
-border-radius:8px;
-color:white;
+background:#161b22;
+padding:15px;
+border-radius:15px;
 }
 
 .left-panel select{
 width:100%;
-height:550px;
+height:650px;
 background:#1f2937;
 color:white;
 border:1px solid #333;
@@ -78,99 +24,40 @@ padding:10px;
 }
 
 .chart-panel{
-flex:1;
+width:100%;
 background:#161b22;
 padding:20px;
 border-radius:15px;
 }
 
-.chart-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
+#chart{
+width:100%;
+height:700px;
+background:#0d1117;
+border-radius:12px;
 margin-bottom:20px;
 }
 
-.chart-header h2{
-color:#00d084;
+.trade-card{
+width:100%;
+background:#1f2937;
+padding:20px;
+border-radius:12px;
+margin-top:20px;
 }
 
-.chart-header select{
-padding:10px;
-background:#1f2937;
-color:white;
-border:1px solid #333;
-border-radius:8px;
+@media(max-width:900px){
+
+.trade-container{
+grid-template-columns:1fr;
+}
+
+.left-panel select{
+height:220px;
 }
 
 #chart{
 height:450px;
-background:#0d1117;
-border-radius:10px;
-margin-bottom:20px;
 }
 
-.trade-controls{
-margin-top:20px;
 }
-
-.trade-card{
-background:#1f2937;
-padding:20px;
-border-radius:12px;
-}
-
-.trade-card h3{
-margin-bottom:10px;
-color:#00d084;
-}
-
-.trade-card input,
-.trade-card select{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-background:#0d1117;
-border:1px solid #333;
-border-radius:8px;
-color:white;
-}
-
-.quick-stakes{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-
-.quick-stakes button{
-flex:1;
-padding:12px;
-background:#00d084;
-border:none;
-border-radius:8px;
-font-weight:bold;
-color:white;
-cursor:pointer;
-}
-
-.buy-up,
-.buy-down{
-width:100%;
-padding:15px;
-font-size:18px;
-font-weight:bold;
-border:none;
-border-radius:10px;
-cursor:pointer;
-margin-top:15px;
-}
-
-.buy-up{
-background:#00d084;
-color:white;
-}
-
-.buy-down{
-background:#ff3b30;
-color
