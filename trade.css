@@ -1,63 +1,64 @@
-.trade-container{
-display:grid;
-grid-template-columns:240px 1fr;
-gap:20px;
-padding:20px;
-align-items:start;
+.trade-page {
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #0b0f17;
 }
 
-.left-panel{
-width:100%;
-background:#161b22;
-padding:15px;
-border-radius:15px;
+.trade-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
-.left-panel select{
-width:100%;
-height:650px;
-background:#1f2937;
-color:white;
-border:1px solid #333;
-border-radius:8px;
-padding:10px;
+/* Hide market list for full screen chart */
+.market-panel {
+  display: none;
 }
 
-.chart-panel{
-width:100%;
-background:#161b22;
-padding:20px;
-border-radius:15px;
+/* Full screen chart */
+.chart-section {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-#chart{
-width:100%;
-height:700px;
-background:#0d1117;
-border-radius:12px;
-margin-bottom:20px;
+.chart-header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.trade-card{
-width:100%;
-background:#1f2937;
-padding:20px;
-border-radius:12px;
-margin-top:20px;
+.chart-box {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: #080c14;
 }
 
-@media(max-width:900px){
-
-.trade-container{
-grid-template-columns:1fr;
+/* Floating trading controls */
+.trade-controls {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 320px;
+  background: #1b2433;
+  border-radius: 15px;
+  padding: 20px;
+  z-index: 10;
 }
 
-.left-panel select{
-height:220px;
-}
-
-#chart{
-height:450px;
-}
-
+/* Bigger chart on mobile */
+@media (max-width: 768px) {
+  .trade-controls {
+    width: calc(100% - 40px);
+    left: 20px;
+    right: 20px;
+    bottom: 15px;
+  }
 }
