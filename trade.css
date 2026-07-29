@@ -1,5 +1,3 @@
-/* ApexTrades Trade Page */
-
 *{
 margin:0;
 padding:0;
@@ -7,300 +5,128 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Arial,sans-serif;
 background:#0d1117;
 color:#fff;
+font-family:Arial,sans-serif;
 }
 
 .topbar{
+height:70px;
+background:#161b22;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-background:#161b22;
 border-bottom:1px solid #222;
 }
 
 .logo{
-font-size:24px;
+font-size:22px;
 font-weight:bold;
 color:#00d084;
 }
 
-.account{
+.balance-box{
 text-align:right;
 }
 
-.account span{
-font-size:13px;
+.balance-box span{
+font-size:12px;
 color:#aaa;
 }
 
-.account h2{
-color:#00d084;
-margin-top:4px;
-}
-
-.market-bar{
+.market-strip{
 display:flex;
-flex-wrap:wrap;
 gap:10px;
-padding:15px;
-background:#161b22;
+padding:10px;
+background:#111827;
 }
 
-.market-bar input,
-.market-bar select{
+.market-strip select{
 flex:1;
-min-width:150px;
 padding:12px;
 background:#1f2937;
 color:#fff;
-border:1px solid #333;
-border-radius:8px;
-font-size:15px;
+border:none;
+border-radius:10px;
 }
 
-.chart-section{
-padding:15px;
+.chart-card{
+height:60vh;
+padding:10px;
 }
 
 .chart-header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:15px;
-}
-
-.chart-header h2{
-color:#00d084;
-}
-
-.live-price{
-text-align:right;
-}
-
-.live-price #price{
-font-size:20px;
-font-weight:bold;
-}
-
-.status{
-display:block;
-font-size:12px;
-color:#00d084;
-margin-top:4px;
-}
-
-#chart{
-width:100%;
-height:70vh;
-background:#111827;
-border-radius:12px;
-border:1px solid #222;
-}
-.trade-panel{
-display:grid;
-grid-template-columns:1fr;
-gap:20px;
-padding:15px;
-}
-
-.trade-box,
-.history-box{
-background:#161b22;
-padding:20px;
-border-radius:12px;
-border:1px solid #222;
-}
-
-.trade-box h3,
-.history-box h3{
-color:#00d084;
 margin-bottom:10px;
 }
 
-.trade-box input,
-.trade-box select{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-background:#1f2937;
-color:#fff;
-border:1px solid #333;
-border-radius:8px;
-font-size:15px;
-}
-
-.quick-stakes{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:8px;
-margin-bottom:20px;
-}
-
-.quick-stakes button{
-padding:12px;
-background:#1f2937;
-color:#fff;
-border:1px solid #333;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-transition:.2s;
-}
-
-.quick-stakes button:hover{
-background:#00d084;
-}
-
-.trade-info{
-display:flex;
-justify-content:space-between;
-background:#1f2937;
-padding:15px;
-border-radius:10px;
-margin-bottom:20px;
-}
-
-.trade-info p{
-font-size:13px;
-color:#aaa;
-}
-
-.trade-info h2{
-margin-top:5px;
+.live-dot{
 color:#00d084;
-}
-
-.buy-up,
-.buy-down{
-width:100%;
-padding:16px;
 font-size:18px;
-font-weight:bold;
-border:none;
-border-radius:10px;
-cursor:pointer;
-margin-top:12px;
-}
-
-.buy-up{
-background:#00c853;
-color:#fff;
-}
-
-.buy-down{
-background:#d32f2f;
-color:#fff;
-}
-
-.buy-up:hover{
-background:#00b248;
-}
-
-.buy-down:hover{
-background:#b71c1c;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:10px;
-}
-
-th,
-td{
-padding:12px;
-border-bottom:1px solid #333;
-text-align:center;
-}
-
-th{
-background:#1f2937;
-color:#00d084;
-}
-
-@media(max-width:768px){
-
-.market-bar{
-flex-direction:column;
-}
-
-.quick-stakes{
-grid-template-columns:repeat(3,1fr);
 }
 
 #chart{
-height:60vh;
+width:100%;
+height:100%;
+background:#111827;
+border-radius:15px;
 }
 
+.trade-card{
+background:#161b22;
+margin:10px;
+padding:18px;
+border-radius:18px;
 }
+
+.trade-card h2{
+margin-bottom:20px;
+color:#00d084;
+}
+
+.form-group,
+#timeBox,
+#tickBox,
+#barrierBox,
+#digitBox{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+}
+
+select,
+input{
+width:100%;
+padding:14px;
+background:#1f2937;
+color:#fff;
+border:none;
+border-radius:10px;
+}
+
 .digit-grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:10px;
-margin:15px 0;
 }
 
 .digit-btn{
+height:55px;
 background:#1f2937;
 color:#fff;
-border:2px solid #2d3748;
+border:none;
 border-radius:12px;
-height:60px;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
-cursor:pointer;
-transition:.3s;
-}
-
-.digit-btn:hover{
-background:#00d084;
 }
 
 .digit-btn.active{
 background:#00d084;
-border-color:#00d084;
-color:#fff;
-box-shadow:0 0 10px rgba(0,208,132,.5);
-}
-
-#selectedDigit{
-color:#00d084;
-font-size:22px;
-font-weight:bold;
-  }
-.digit-stats{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
-margin-top:20px;
-}
-
-.digit-stat{
-background:#161b22;
-border:2px solid #2d3748;
-border-radius:12px;
-padding:12px;
-text-align:center;
-transition:.3s;
-}
-
-.digit-stat span{
-display:block;
-font-size:14px;
-color:#00d084;
-margin-bottom:8px;
-font-weight:bold;
-}
-
-.digit-stat strong{
-font-size:22px;
-color:#ffffff;
-}
-
-.digit-stat:hover{
-border-color:#00d084;
-transform:translateY(-2px);
 }
