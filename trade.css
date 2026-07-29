@@ -236,3 +236,38 @@ height:60vh;
 }
 
 }
+.digit-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin:15px 0;
+}
+
+.digit-btn{
+background:#1f2937;
+color:#fff;
+border:2px solid #2d3748;
+border-radius:12px;
+height:60px;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.digit-btn:hover{
+background:#00d084;
+}
+
+.digit-btn.active{
+background:#00d084;
+border-color:#00d084;
+color:#fff;
+box-shadow:0 0 10px rgba(0,208,132,.5);
+}
+
+#selectedDigit{
+color:#00d084;
+font-size:22px;
+font-weight:bold;
+  }
