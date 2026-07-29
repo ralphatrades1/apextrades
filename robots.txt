@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ralphatrades1.github.io/apextrades/sitemap.xml
