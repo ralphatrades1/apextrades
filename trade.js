@@ -367,3 +367,53 @@ function updateDigitStats(price){
     }
 
 }
+// Trade Tabs
+
+document.addEventListener("DOMContentLoaded", function () {
+
+const tradeBtn = document.getElementById("tradeTabBtn");
+const positionsBtn = document.getElementById("positionsTabBtn");
+const historyBtn = document.getElementById("historyTabBtn");
+
+const tradePanel = document.getElementById("tradePanel");
+const positionsPanel = document.getElementById("positionsPanel");
+const historyPanel = document.getElementById("historyPanel");
+
+function openTab(tab){
+
+tradePanel.style.display="none";
+positionsPanel.style.display="none";
+historyPanel.style.display="none";
+
+tradeBtn.classList.remove("active");
+positionsBtn.classList.remove("active");
+historyBtn.classList.remove("active");
+
+if(tab==="trade"){
+
+tradePanel.style.display="block";
+tradeBtn.classList.add("active");
+
+}
+
+if(tab==="positions"){
+
+positionsPanel.style.display="block";
+positionsBtn.classList.add("active");
+
+}
+
+if(tab==="history"){
+
+historyPanel.style.display="block";
+historyBtn.classList.add("active");
+
+}
+
+}
+
+tradeBtn.onclick=()=>openTab("trade");
+positionsBtn.onclick=()=>openTab("positions");
+historyBtn.onclick=()=>openTab("history");
+
+});
