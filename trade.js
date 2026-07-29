@@ -1,14 +1,17 @@
-// ApexTrades Trading Engine - Part 1
+// ApexTrades Trade Engine - Part 1
+
+let chart;
+let candleSeries;
+let candles = [];
+let currentPrice = 100;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    initStorage();
-
     loadBalance();
 
-    quickStakeButtons();
+    updateMarketName();
 
-    marketSelector();
+    quickStakeButtons();
 
     createChart();
 
@@ -20,9 +23,31 @@ function loadBalance(){
 
     if(balance){
 
-        balance.innerHTML="$"+getBalance().toFixed(2);
+        if(typeof getBalance==="function"){
+
+            balance.textContent="$"+getBalance().toFixed(2);
+
+        }else{
+
+            balance.textContent="$1000.00";
+
+        }
 
     }
+
+}
+
+function updateMarketName(){
+
+    const market=document.getElementById("market");
+
+    const title=document.getElementById("selectedMarket");
+
+    market.addEventListener("change",()=>{
+
+        title.textContent=market.value;
+
+    });
 
 }
 
@@ -32,32 +57,15 @@ function quickStakeButtons(){
 
     document.querySelectorAll(".quick-stakes button").forEach(btn=>{
 
-        btn.onclick=()=>{
+        btn.onclick=function(){
 
-            stake.value=btn.innerText.replace("$","");
+            stake.value=this.innerText.replace("$","");
 
         };
 
     });
 
 }
-
-function marketSelector(){
-
-    const market=document.getElementById("market");
-
-    const title=document.getElementById("selectedMarket");
-
-    market.onchange=function(){
-
-        title.innerHTML=this.value;
-
-    };
-
-}
-
-let chart;
-let candleSeries;
 
 function createChart(){
 
@@ -70,13 +78,13 @@ function createChart(){
         height:container.clientHeight,
 
         layout:{
-            background:{color:"#0d1117"},
+            background:{color:"#111827"},
             textColor:"#ffffff"
         },
 
         grid:{
-            vertLines:{color:"#20252d"},
-            horzLines:{color:"#20252d"}
+            vertLines:{color:"#222"},
+            horzLines:{color:"#222"}
         },
 
         rightPriceScale:{
@@ -84,14 +92,30 @@ function createChart(){
         },
 
         timeScale:{
-            borderColor:"#333"
+            borderColor:"#333",
+            timeVisible:true,
+            secondsVisible:true
         }
 
     });
 
-    candleSeries=chart.addCandlestickSeries();
+    candleSeries=chart.addCandlestickSeries({
 
-    generateCandles();
+        upColor:"#00d084",
+
+        downColor:"#ff4d4f",
+
+        borderVisible:false,
+
+        wickUpColor:"#00d084",
+
+        wickDownColor:"#ff4d4f"
+
+    });
+
+    generateHistory();
+
+    setInterval(addNewCandle,1000);
 
     window.addEventListener("resize",()=>{
 
@@ -107,25 +131,25 @@ function createChart(){
 
 }
 
-function generateCandles(){
+function generateHistory(){
 
-    let data=[];
+    candles=[];
 
-    let price=100;
+    let time=Math.floor(Date.now()/1000)-120;
 
-    let time=Math.floor(Date.now()/1000)-100;
+    currentPrice=100;
 
-    for(let i=0;i<100;i++){
+    for(let i=0;i<120;i++){
 
-        let open=price;
+        const open=currentPrice;
 
-        let close=open+(Math.random()-0.5)*3;
+        const close=open+(Math.random()-0.5)*2;
 
-        let high=Math.max(open,close)+Math.random()*1.5;
+        const high=Math.max(open,close)+Math.random();
 
-        let low=Math.min(open,close)-Math.random()*1.5;
+        const low=Math.min(open,close)-Math.random();
 
-        data.push({
+        candles.push({
 
             time:time+i,
 
@@ -139,46 +163,64 @@ function generateCandles(){
 
         });
 
-        price=close;
+        currentPrice=close;
 
     }
 
-    candleSeries.setData(data);
+    candleSeries.setData(candles);
 
-    setInterval(()=>{
+    updatePrice();
 
-        const last=data[data.length-1];
+}
 
-        const open=last.close;
+function addNewCandle(){
 
-        const close=open+(Math.random()-0.5)*3;
+    const last=candles[candles.length-1];
 
-        const high=Math.max(open,close)+Math.random()*1.5;
+    const open=last.close;
 
-        const low=Math.min(open,close)-Math.random()*1.5;
+    const close=open+(Math.random()-0.5)*2;
 
-        data.push({
+    const high=Math.max(open,close)+Math.random();
 
-            time:last.time+1,
+    const low=Math.min(open,close)-Math.random();
 
-            open:open,
+    candles.push({
 
-            high:high,
+        time:last.time+1,
 
-            low:low,
+        open:open,
 
-            close:close
+        high:high,
 
-        });
+        low:low,
 
-        if(data.length>120){
+        close:close
 
-            data.shift();
+    });
 
-        }
+    if(candles.length>120){
 
-        candleSeries.setData(data);
+        candles.shift();
 
-    },1000);
+    }
+
+    candleSeries.setData(candles);
+
+    currentPrice=close;
+
+    updatePrice();
+
+}
+
+function updatePrice(){
+
+    const price=document.getElementById("price");
+
+    if(price){
+
+        price.textContent=currentPrice.toFixed(2);
+
+    }
 
 }
