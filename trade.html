@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -18,209 +19,78 @@
 <header class="topbar">
 
 <div class="logo">
+
 ApexTrades
+
 </div>
 
-<div class="balance-box">
+<div class="wallet">
+
 <span>Balance</span>
+
 <h2 id="balance">$1000.00</h2>
+
 </div>
 
 </header>
 
-<section class="market-strip">
+<section class="market-header">
+
+<div class="market-left">
 
 <select id="market">
 
 <option selected>BTC/USD</option>
+
 <option>ETH/USD</option>
+
 <option>EUR/USD</option>
+
 <option>GBP/USD</option>
+
 <option>Volatility 10 Index</option>
+
 <option>Volatility 25 Index</option>
+
 <option>Volatility 50 Index</option>
+
 <option>Volatility 75 Index</option>
+
 <option>Volatility 100 Index</option>
+
 <option>Boom 1000</option>
+
 <option>Crash 1000</option>
 
 </select>
 
-<select id="timeframe">
+</div>
 
-<option>30 Seconds</option>
-<option selected>1 Minute</option>
-<option>3 Minutes</option>
-<option>5 Minutes</option>
-
-</select>
-
-</section>
-
-<section class="chart-card">
-
-<div class="chart-header">
-
-<h2 id="selectedMarket">
-BTC/USD
-</h2>
-
-<div class="live-box">
+<div class="market-right">
 
 <span class="live-dot">●</span>
 
-<span id="price">
-100.00
-</span>
+<span id="price">100.00</span>
 
 </div>
 
-</div>
+</section>
+
+<section class="chart-area">
 
 <div id="chart"></div>
 
 </section>
 
-<section class="trade-card">
+<div class="floating-buttons">
 
-<div class="panel-tabs">
-
-<button class="tab active" id="tradeTabBtn">Trade</button>
-
-<button class="tab" id="positionsTabBtn">Positions</button>
-
-<button class="tab" id="historyTabBtn">History</button>
-
-</div>
-
-<div class="form-group">
-
-<label>Contract</label>
-
-<select id="contractType">
-
-<option value="risefall">Rise / Fall</option>
-<option value="higherlower">Higher / Lower</option>
-<option value="evenodd">Even / Odd</option>
-<option value="overunder">Over / Under</option>
-<option value="matchesdiffers">Matches / Differs</option>
-
-</select>
-
-</div>
-<div id="tradePanel">
-<div class="form-group">
-
-<label>Trade Mode</label>
-
-<select id="tradeMode">
-
-<option value="time">Time Contracts</option>
-<option value="tick">Tick Contracts</option>
-
-</select>
-
-</div>
-
-<div id="timeBox">
-
-<label>Duration</label>
-
-<select id="duration">
-
-<option>30 Seconds</option>
-<option selected>1 Minute</option>
-<option>3 Minutes</option>
-<option>5 Minutes</option>
-
-</select>
-
-</div>
-
-<div id="tickBox" style="display:none;">
-
-<label>Ticks</label>
-
-<select id="ticks">
-
-<option>1 Tick</option>
-<option>2 Ticks</option>
-<option>5 Ticks</option>
-<option>10 Ticks</option>
-
-</select>
-
-</div>
-
-<div id="barrierBox" style="display:none;">
-
-<label>Barrier</label>
-
-<input
-type="number"
-id="barrier"
-placeholder="Barrier">
-
-</div>
-
-<div id="digitBox" style="display:none;">
-
-<label>Prediction Digit</label>
-
-<div class="digit-grid">
-
-<button type="button" class="digit-btn active" data-digit="0">0</button>
-<button type="button" class="digit-btn" data-digit="1">1</button>
-<button type="button" class="digit-btn" data-digit="2">2</button>
-<button type="button" class="digit-btn" data-digit="3">3</button>
-<button type="button" class="digit-btn" data-digit="4">4</button>
-
-<button type="button" class="digit-btn" data-digit="5">5</button>
-<button type="button" class="digit-btn" data-digit="6">6</button>
-<button type="button" class="digit-btn" data-digit="7">7</button>
-<button type="button" class="digit-btn" data-digit="8">8</button>
-<button type="button" class="digit-btn" data-digit="9">9</button>
-
-</div>
-
-<input type="hidden" id="predictionDigit" value="0">
-
-</div>
-<div class="stake-card">
-
-<h3>Stake</h3>
-
-<div class="stake-controls">
-
-<button id="minusStake">−</button>
-
-<input
-type="number"
-id="stake"
-value="1"
-min="1">
-
-<button id="plusStake">+</button>
-
-</div>
-
-<div class="payout-card">
-
-<p>Expected Payout</p>
-
-<h2 id="payout">$1.95</h2>
-
-</div>
-
-<div class="trade-buttons">
-
-<button id="buyUp" class="buy-btn">
+<button id="buyUp">
 
 🟢 BUY
 
 </button>
 
-<button id="buyDown" class="sell-btn">
+<button id="buyDown">
 
 🔴 SELL
 
@@ -228,28 +98,28 @@ min="1">
 
 </div>
 
+<section class="bottom-sheet">
+
+<div class="sheet-handle"></div>
+
+<div class="tabs">
+
+<button class="tab active">
+
+Trade
+
+</button>
+
+<button class="tab">
+
+Positions
+
+</button>
+
+<button class="tab">
+
+History
+
+</button>
+
 </div>
-  </div>
-
-<div id="positionsPanel" style="display:none;">
-
-<h3>Open Positions</h3>
-
-<p>No open positions yet.</p>
-
-</div>
-
-<div id="historyPanel" style="display:none;">
-
-<h3>Trade History</h3>
-
-<p>No completed trades yet.</p>
-
-</div>
-</section>
-
-<script src="storage.js"></script>
-<script src="trade.js"></script>
-
-</body>
-</html>
