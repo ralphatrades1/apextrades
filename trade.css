@@ -197,3 +197,31 @@ color:#fff;
 background:#ff4d4f;
 color:#fff;
 }
+.trade-card{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+background:#161b22;
+border-top-left-radius:25px;
+border-top-right-radius:25px;
+padding:20px;
+max-height:45vh;
+overflow-y:auto;
+box-shadow:0 -5px 20px rgba(0,0,0,.5);
+}
+
+.chart-card{
+height:calc(100vh - 170px);
+padding:10px;
+margin-bottom:45vh;
+}
+
+.trade-card::-webkit-scrollbar{
+width:4px;
+}
+
+.trade-card::-webkit-scrollbar-thumb{
+background:#00d084;
+border-radius:10px;
+}
