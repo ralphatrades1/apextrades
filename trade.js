@@ -316,3 +316,24 @@ document.addEventListener("DOMContentLoaded", function () {
     updateContractUI();
 
 });
+// Prediction Digit Buttons
+
+document.querySelectorAll(".digit-btn").forEach(button=>{
+
+button.addEventListener("click",function(){
+
+document.querySelectorAll(".digit-btn").forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+
+this.classList.add("active");
+
+document.getElementById("predictionDigit").value=this.dataset.digit;
+
+document.getElementById("selectedDigit").textContent=this.dataset.digit;
+
+});
+
+});
