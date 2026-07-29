@@ -271,3 +271,36 @@ color:#00d084;
 font-size:22px;
 font-weight:bold;
   }
+.digit-stats{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.digit-stat{
+background:#161b22;
+border:2px solid #2d3748;
+border-radius:12px;
+padding:12px;
+text-align:center;
+transition:.3s;
+}
+
+.digit-stat span{
+display:block;
+font-size:14px;
+color:#00d084;
+margin-bottom:8px;
+font-weight:bold;
+}
+
+.digit-stat strong{
+font-size:22px;
+color:#ffffff;
+}
+
+.digit-stat:hover{
+border-color:#00d084;
+transform:translateY(-2px);
+}
