@@ -236,26 +236,30 @@ placeholder="Enter barrier price">
 
 </div>
 
-<div id="digitBox" style="display:none;">
-
 <h3>Prediction Digit</h3>
 
-<select id="predictionDigit">
+<div class="digit-grid">
 
-<option>0</option>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
+<button type="button" class="digit-btn active" data-digit="0">0</button>
+<button type="button" class="digit-btn" data-digit="1">1</button>
+<button type="button" class="digit-btn" data-digit="2">2</button>
+<button type="button" class="digit-btn" data-digit="3">3</button>
+<button type="button" class="digit-btn" data-digit="4">4</button>
 
-</select>
+<button type="button" class="digit-btn" data-digit="5">5</button>
+<button type="button" class="digit-btn" data-digit="6">6</button>
+<button type="button" class="digit-btn" data-digit="7">7</button>
+<button type="button" class="digit-btn" data-digit="8">8</button>
+<button type="button" class="digit-btn" data-digit="9">9</button>
 
 </div>
+
+<input type="hidden" id="predictionDigit" value="0">
+
+<p>
+Selected Digit:
+<strong id="selectedDigit">0</strong>
+</p>
 
 <h3>Stake (USD)</h3>
 
