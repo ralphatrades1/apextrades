@@ -334,7 +334,8 @@ this.classList.add("active");
 
 document.getElementById("predictionDigit").value=this.dataset.digit;
 
-document.getElementById("selectedDigit").textContent=this.dataset.digit;
+// Selected digit is stored here
+document.getElementById("predictionDigit").value=this.dataset.digit;
 
 });
 
