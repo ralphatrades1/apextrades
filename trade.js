@@ -223,6 +223,8 @@ function updatePrice(){
 
     }
 
+    updateDigitStats(currentPrice);
+
 }
 // Dynamic contract controls
 
