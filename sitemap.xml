@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/login.html</loc>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/signup.html</loc>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/dashboard.html</loc>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/trade.html</loc>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/deposit.html</loc>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/history.html</loc>
+  </url>
+
+  <url>
+    <loc>https://ralphatrades1.github.io/apextrades/profile.html</loc>
+  </url>
+
+</urlset>
