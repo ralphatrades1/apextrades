@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,7 +8,7 @@
 
 <link rel="stylesheet" href="trade.css">
 
-<script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
 
 </head>
 
@@ -34,7 +32,12 @@ ApexTrades
 
 </header>
 
-<div class="market-top">
+<section class="market-bar">
+
+<input
+type="text"
+id="searchMarket"
+placeholder="Search market...">
 
 <select id="market">
 
@@ -129,21 +132,30 @@ ApexTrades
 
 </select>
 
+</section>
+
+<section class="chart-section">
+
+<div class="chart-header">
+
+<h2 id="selectedMarket">BTC/USD</h2>
+
+<div class="live-price">
+
+<span id="price">100.00</span>
+
+<span class="status">● LIVE</span>
+
 </div>
 
-<div class="chart-card">
-
-<h2 id="selectedMarket">
-
-BTC/USD
-
-</h2>
+</div>
 
 <div id="chart"></div>
+</section>
 
-</div>
+<section class="trade-panel">
 
-<div class="trade-card">
+<div class="trade-box">
 
 <h3>Contract Type</h3>
 
@@ -175,11 +187,23 @@ min="1">
 
 </div>
 
-<div class="payout">
+<div class="trade-info">
 
-<h3>Expected Payout</h3>
+<div>
 
-<h2>$1.95</h2>
+<p>Payout</p>
+
+<h2 id="payout">95%</h2>
+
+</div>
+
+<div>
+
+<p>Duration</p>
+
+<h2 id="timer">00:30</h2>
+
+</div>
 
 </div>
 
@@ -197,7 +221,50 @@ min="1">
 
 </div>
 
+<div class="history-box">
+
+<h3>Recent Trades</h3>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Market</th>
+
+<th>Type</th>
+
+<th>Result</th>
+
+<th>P/L</th>
+
+</tr>
+
+</thead>
+
+<tbody id="recentTrades">
+
+<tr>
+
+<td colspan="4">
+
+No trades yet
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
 <script src="storage.js"></script>
+
 <script src="trade.js"></script>
 
 </body>
