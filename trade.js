@@ -1,71 +1,49 @@
-// ApexTrades Trade Engine - Part 1
+// ===============================
+// ApexTrades V2
+// Trade Engine - Part 1
+// ===============================
 
 let chart;
 let candleSeries;
 let candles = [];
 let currentPrice = 100;
 
+// Start App
 document.addEventListener("DOMContentLoaded", () => {
-
-    loadBalance();
-
-    updateMarketName();
-
-    quickStakeButtons();
 
     createChart();
 
+    loadBalance();
+
+    setupTabs();
+
+    setupContractUI();
+
+    setupStakeButtons();
+
+    setupDigitButtons();
+
 });
+
+// --------------------
+// Balance
+// --------------------
 
 function loadBalance(){
 
-    const balance=document.getElementById("balance");
+    const balance = document.getElementById("balance");
 
     if(balance){
 
-        if(typeof getBalance==="function"){
-
-            balance.textContent="$"+getBalance().toFixed(2);
-
-        }else{
-
-            balance.textContent="$1000.00";
-
-        }
+        balance.textContent="$1000.00";
 
     }
 
 }
 
-function updateMarketName(){
-
-    const market=document.getElementById("market");
-
-    const title=document.getElementById("selectedMarket");
-
-    market.addEventListener("change",()=>{
-
-        title.textContent=market.value;
-
-    });
-
-}
-
-function quickStakeButtons(){
-
-    const stake=document.getElementById("stake");
-
-    document.querySelectorAll(".quick-stakes button").forEach(btn=>{
-
-        btn.onclick=function(){
-
-            stake.value=this.innerText.replace("$","");
-
-        };
-
-    });
-
-}
+// --------------------
+// Chart
+// --------------------
 
 function createChart(){
 
@@ -105,11 +83,11 @@ function createChart(){
 
         downColor:"#ff4d4f",
 
-        borderVisible:false,
-
         wickUpColor:"#00d084",
 
-        wickDownColor:"#ff4d4f"
+        wickDownColor:"#ff4d4f",
+
+        borderVisible:false
 
     });
 
@@ -117,29 +95,21 @@ function createChart(){
 
     setInterval(addNewCandle,1000);
 
-    window.addEventListener("resize",()=>{
-
-        chart.applyOptions({
-
-            width:container.clientWidth,
-
-            height:container.clientHeight
-
-        });
-
-    });
-
 }
+
+// --------------------
+// History
+// --------------------
 
 function generateHistory(){
 
     candles=[];
 
-    let time=Math.floor(Date.now()/1000)-120;
+    let time=Math.floor(Date.now()/1000)-100;
 
     currentPrice=100;
 
-    for(let i=0;i<120;i++){
+    for(let i=0;i<100;i++){
 
         const open=currentPrice;
 
@@ -153,13 +123,13 @@ function generateHistory(){
 
             time:time+i,
 
-            open:open,
+            open,
 
-            high:high,
+            high,
 
-            low:low,
+            low,
 
-            close:close
+            close
 
         });
 
@@ -189,17 +159,17 @@ function addNewCandle(){
 
         time:last.time+1,
 
-        open:open,
+        open,
 
-        high:high,
+        high,
 
-        low:low,
+        low,
 
-        close:close
+        close
 
     });
 
-    if(candles.length>120){
+    if(candles.length>100){
 
         candles.shift();
 
@@ -215,205 +185,46 @@ function addNewCandle(){
 
 function updatePrice(){
 
-    const price=document.getElementById("price");
-
-    if(price){
-
-        price.textContent=currentPrice.toFixed(2);
-
-    }
-
-    updateDigitStats(currentPrice);
+    document.getElementById("price").textContent=currentPrice.toFixed(2);
 
 }
-// Dynamic contract controls
 
-document.addEventListener("DOMContentLoaded", function () {
+// --------------------
+// Tabs
+// --------------------
 
-    const contractType = document.getElementById("contractType");
-    const buyUp = document.getElementById("buyUp");
-    const buyDown = document.getElementById("buyDown");
+function setupTabs(){
 
-    const barrierBox = document.getElementById("barrierBox");
-    const digitBox = document.getElementById("digitBox");
+    const tabs=document.querySelectorAll(".tab");
 
-    const tradeMode = document.getElementById("tradeMode");
-    const timeBox = document.getElementById("timeBox");
-    const tickBox = document.getElementById("tickBox");
+    const trade=document.getElementById("tradePanel");
 
-    function updateTradeMode(){
+    const positions=document.getElementById("positionsPanel");
 
-        if(tradeMode.value==="time"){
+    const history=document.getElementById("historyPanel");
 
-            timeBox.style.display="block";
-            tickBox.style.display="none";
+    tabs.forEach((tab,index)=>{
 
-        }else{
+        tab.onclick=function(){
 
-            timeBox.style.display="none";
-            tickBox.style.display="block";
+            tabs.forEach(t=>t.classList.remove("active"));
 
-        }
+            tab.classList.add("active");
 
-    }
+            trade.style.display="none";
 
-    function updateContractUI(){
+            positions.style.display="none";
 
-        barrierBox.style.display="none";
-        digitBox.style.display="none";
+            history.style.display="none";
 
-        switch(contractType.value){
+            if(index===0) trade.style.display="block";
 
-            case "risefall":
+            if(index===1) positions.style.display="block";
 
-                buyUp.innerHTML="🟢 BUY UP";
-                buyDown.innerHTML="🔴 BUY DOWN";
+            if(index===2) history.style.display="block";
 
-            break;
+        };
 
-            case "higherlower":
-
-                barrierBox.style.display="block";
-
-                buyUp.innerHTML="🟢 HIGHER";
-                buyDown.innerHTML="🔴 LOWER";
-
-            break;
-
-            case "evenodd":
-
-                buyUp.innerHTML="🟢 EVEN";
-                buyDown.innerHTML="🔴 ODD";
-
-            break;
-
-            case "overunder":
-
-                digitBox.style.display="block";
-
-                buyUp.innerHTML="🟢 OVER";
-                buyDown.innerHTML="🔴 UNDER";
-
-            break;
-
-            case "matchesdiffers":
-
-                digitBox.style.display="block";
-
-                buyUp.innerHTML="🟢 MATCHES";
-                buyDown.innerHTML="🔴 DIFFERS";
-
-            break;
-
-        }
-
-    }
-
-    tradeMode.addEventListener("change", updateTradeMode);
-
-    contractType.addEventListener("change", updateContractUI);
-
-    updateTradeMode();
-
-    updateContractUI();
-
-});
-// Prediction Digit Buttons
-
-document.querySelectorAll(".digit-btn").forEach(button=>{
-
-button.addEventListener("click",function(){
-
-document.querySelectorAll(".digit-btn").forEach(btn=>{
-
-btn.classList.remove("active");
-
-});
-
-this.classList.add("active");
-
-document.getElementById("predictionDigit").value=this.dataset.digit;
-
-// Selected digit is stored here
-document.getElementById("predictionDigit").value=this.dataset.digit;
-
-});
-
-});
-// Live Last-Digit Statistics
-
-const digitCount = new Array(10).fill(0);
-
-function updateDigitStats(price){
-
-    const lastDigit = Math.abs(Math.round(price * 100)) % 10;
-
-    digitCount[lastDigit]++;
-
-    let total = digitCount.reduce((a,b)=>a+b,0);
-
-    for(let i=0;i<10;i++){
-
-        const percent = total === 0 ? 0 : Math.round((digitCount[i]/total)*100);
-
-        const stat = document.getElementById("stat"+i);
-
-        if(stat){
-
-            stat.textContent = percent + "%";
-
-        }
-
-    }
+    });
 
 }
-// Trade Tabs
-
-document.addEventListener("DOMContentLoaded", function () {
-
-const tradeBtn = document.getElementById("tradeTabBtn");
-const positionsBtn = document.getElementById("positionsTabBtn");
-const historyBtn = document.getElementById("historyTabBtn");
-
-const tradePanel = document.getElementById("tradePanel");
-const positionsPanel = document.getElementById("positionsPanel");
-const historyPanel = document.getElementById("historyPanel");
-
-function openTab(tab){
-
-tradePanel.style.display="none";
-positionsPanel.style.display="none";
-historyPanel.style.display="none";
-
-tradeBtn.classList.remove("active");
-positionsBtn.classList.remove("active");
-historyBtn.classList.remove("active");
-
-if(tab==="trade"){
-
-tradePanel.style.display="block";
-tradeBtn.classList.add("active");
-
-}
-
-if(tab==="positions"){
-
-positionsPanel.style.display="block";
-positionsBtn.classList.add("active");
-
-}
-
-if(tab==="history"){
-
-historyPanel.style.display="block";
-historyBtn.classList.add("active");
-
-}
-
-}
-
-tradeBtn.onclick=()=>openTab("trade");
-positionsBtn.onclick=()=>openTab("positions");
-historyBtn.onclick=()=>openTab("history");
-
-});
