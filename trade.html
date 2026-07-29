@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,116 +18,38 @@
 <header class="topbar">
 
 <div class="logo">
-
 ApexTrades
-
 </div>
 
-<div class="account">
-
+<div class="balance-box">
 <span>Balance</span>
-
 <h2 id="balance">$1000.00</h2>
-
 </div>
 
 </header>
 
-<section class="market-bar">
-
-<input
-type="text"
-id="searchMarket"
-placeholder="Search market...">
+<section class="market-strip">
 
 <select id="market">
 
-<optgroup label="Forex">
-
-<option>EUR/USD</option>
-<option>GBP/USD</option>
-<option>USD/JPY</option>
-<option>USD/CHF</option>
-<option>USD/CAD</option>
-<option>AUD/USD</option>
-<option>NZD/USD</option>
-<option>EUR/GBP</option>
-<option>EUR/JPY</option>
-<option>GBP/JPY</option>
-
-</optgroup>
-
-<optgroup label="Crypto">
-
 <option selected>BTC/USD</option>
 <option>ETH/USD</option>
-<option>BNB/USD</option>
-<option>SOL/USD</option>
-<option>XRP/USD</option>
-<option>ADA/USD</option>
-<option>DOGE/USD</option>
-
-</optgroup>
-
-<optgroup label="Volatility">
-
+<option>EUR/USD</option>
+<option>GBP/USD</option>
 <option>Volatility 10 Index</option>
-<option>Volatility 10 (1s)</option>
 <option>Volatility 25 Index</option>
-<option>Volatility 25 (1s)</option>
 <option>Volatility 50 Index</option>
-<option>Volatility 50 (1s)</option>
 <option>Volatility 75 Index</option>
-<option>Volatility 75 (1s)</option>
 <option>Volatility 100 Index</option>
-<option>Volatility 100 (1s)</option>
-
-</optgroup>
-
-<optgroup label="Boom">
-
-<option>Boom 300</option>
-<option>Boom 500</option>
-<option>Boom 600</option>
-<option>Boom 900</option>
 <option>Boom 1000</option>
-
-</optgroup>
-
-<optgroup label="Crash">
-
-<option>Crash 300</option>
-<option>Crash 500</option>
-<option>Crash 600</option>
-<option>Crash 900</option>
 <option>Crash 1000</option>
-
-</optgroup>
-
-<optgroup label="Jump">
-
-<option>Jump 10</option>
-<option>Jump 25</option>
-<option>Jump 50</option>
-<option>Jump 75</option>
-<option>Jump 100</option>
-
-</optgroup>
-
-<optgroup label="Other">
-
-<option>Step Index</option>
-<option>Range Break 100</option>
-<option>Range Break 200</option>
-
-</optgroup>
 
 </select>
 
 <select id="timeframe">
 
 <option>30 Seconds</option>
-<option>1 Minute</option>
+<option selected>1 Minute</option>
 <option>3 Minutes</option>
 <option>5 Minutes</option>
 
@@ -134,68 +57,73 @@ placeholder="Search market...">
 
 </section>
 
-<section class="chart-section">
+<section class="chart-card">
 
 <div class="chart-header">
 
-<h2 id="selectedMarket">BTC/USD</h2>
+<h2 id="selectedMarket">
+BTC/USD
+</h2>
 
-<div class="live-price">
+<div class="live-box">
 
-<span id="price">100.00</span>
+<span class="live-dot">●</span>
 
-<span class="status">● LIVE</span>
+<span id="price">
+100.00
+</span>
 
 </div>
 
 </div>
 
 <div id="chart"></div>
+
 </section>
 
-<section class="trade-panel">
+<section class="trade-card">
 
-<div class="trade-box">
+<h2>Trade</h2>
 
-<h3>Trade Mode</h3>
+<div class="form-group">
+
+<label>Contract</label>
+
+<select id="contractType">
+
+<option value="risefall">Rise / Fall</option>
+<option value="higherlower">Higher / Lower</option>
+<option value="evenodd">Even / Odd</option>
+<option value="overunder">Over / Under</option>
+<option value="matchesdiffers">Matches / Differs</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Trade Mode</label>
 
 <select id="tradeMode">
 
 <option value="time">Time Contracts</option>
-
 <option value="tick">Tick Contracts</option>
 
 </select>
 
-<h3>Contract Type</h3>
-
-<select id="contractType">
-
-<option value="risefall">Rise/Fall</option>
-
-<option value="higherlower">Higher/Lower</option>
-
-<option value="evenodd">Even/Odd</option>
-
-<option value="overunder">Over/Under</option>
-
-<option value="matchesdiffers">Matches/Differs</option>
-
-</select>
+</div>
 
 <div id="timeBox">
 
-<h3>Duration</h3>
+<label>Duration</label>
 
 <select id="duration">
 
-<option value="30">30 Seconds</option>
-
-<option value="60">1 Minute</option>
-
-<option value="180">3 Minutes</option>
-
-<option value="300">5 Minutes</option>
+<option>30 Seconds</option>
+<option selected>1 Minute</option>
+<option>3 Minutes</option>
+<option>5 Minutes</option>
 
 </select>
 
@@ -203,23 +131,14 @@ placeholder="Search market...">
 
 <div id="tickBox" style="display:none;">
 
-<h3>Ticks</h3>
+<label>Ticks</label>
 
 <select id="ticks">
 
 <option>1 Tick</option>
-
 <option>2 Ticks</option>
-
 <option>5 Ticks</option>
-
 <option>10 Ticks</option>
-
-<option>25 Ticks</option>
-
-<option>50 Ticks</option>
-
-<option>100 Ticks</option>
 
 </select>
 
@@ -227,16 +146,18 @@ placeholder="Search market...">
 
 <div id="barrierBox" style="display:none;">
 
-<h3>Barrier Price</h3>
+<label>Barrier</label>
 
 <input
 type="number"
 id="barrier"
-placeholder="Enter barrier price">
+placeholder="Barrier">
 
 </div>
 
-<h3>Prediction Digit</h3>
+<div id="digitBox" style="display:none;">
+
+<label>Prediction Digit</label>
 
 <div class="digit-grid">
 
@@ -256,120 +177,12 @@ placeholder="Enter barrier price">
 
 <input type="hidden" id="predictionDigit" value="0">
 
-<div class="digit-stats">
-
-<div class="digit-stat"><span id="stat0">10%</span><strong>0</strong></div>
-<div class="digit-stat"><span id="stat1">10%</span><strong>1</strong></div>
-<div class="digit-stat"><span id="stat2">10%</span><strong>2</strong></div>
-<div class="digit-stat"><span id="stat3">10%</span><strong>3</strong></div>
-<div class="digit-stat"><span id="stat4">10%</span><strong>4</strong></div>
-
-<div class="digit-stat"><span id="stat5">10%</span><strong>5</strong></div>
-<div class="digit-stat"><span id="stat6">10%</span><strong>6</strong></div>
-<div class="digit-stat"><span id="stat7">10%</span><strong>7</strong></div>
-<div class="digit-stat"><span id="stat8">10%</span><strong>8</strong></div>
-<div class="digit-stat"><span id="stat9">10%</span><strong>9</strong></div>
-
-</div>
-
-<h3>Stake (USD)</h3>
-
-<input
-type="number"
-id="stake"
-value="1"
-min="1">
-
-<div class="quick-stakes">
-
-<button>$1</button>
-<button>$5</button>
-<button>$10</button>
-<button>$25</button>
-<button>$50</button>
-
-</div>
-
-<div class="trade-info">
-
-<div>
-
-<p>Payout</p>
-
-<h2 id="payout">95%</h2>
-
-</div>
-
-<div>
-
-<p>Duration</p>
-
-<h2 id="timer">00:30</h2>
-
-</div>
-
-</div>
-
-<button class="buy-up" id="buyUp">
-
-🟢 BUY UP
-
-</button>
-
-<button class="buy-down" id="buyDown">
-
-🔴 BUY DOWN
-
-</button>
-
-</div>
-
-<div class="history-box">
-
-<h3>Recent Trades</h3>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Market</th>
-
-<th>Type</th>
-
-<th>Result</th>
-
-<th>P/L</th>
-
-</tr>
-
-</thead>
-
-<tbody id="recentTrades">
-
-<tr>
-
-<td colspan="4">
-
-No trades yet
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
 </div>
 
 </section>
 
 <script src="storage.js"></script>
-
 <script src="trade.js"></script>
 
 </body>
-
 </html>
