@@ -226,85 +226,93 @@ function updatePrice(){
 }
 // Dynamic contract controls
 
-const contractType = document.getElementById("contractType");
-const buyUp = document.getElementById("buyUp");
-const buyDown = document.getElementById("buyDown");
+document.addEventListener("DOMContentLoaded", function () {
 
-const barrierBox = document.getElementById("barrierBox");
-const digitBox = document.getElementById("digitBox");
+    const contractType = document.getElementById("contractType");
+    const buyUp = document.getElementById("buyUp");
+    const buyDown = document.getElementById("buyDown");
 
-const tradeMode = document.getElementById("tradeMode");
-const timeBox = document.getElementById("timeBox");
-const tickBox = document.getElementById("tickBox");
+    const barrierBox = document.getElementById("barrierBox");
+    const digitBox = document.getElementById("digitBox");
 
-tradeMode.addEventListener("change", function(){
+    const tradeMode = document.getElementById("tradeMode");
+    const timeBox = document.getElementById("timeBox");
+    const tickBox = document.getElementById("tickBox");
 
-    if(this.value==="time"){
+    function updateTradeMode(){
 
-        timeBox.style.display="block";
-        tickBox.style.display="none";
+        if(tradeMode.value==="time"){
 
-    }else{
+            timeBox.style.display="block";
+            tickBox.style.display="none";
 
-        timeBox.style.display="none";
-        tickBox.style.display="block";
+        }else{
+
+            timeBox.style.display="none";
+            tickBox.style.display="block";
+
+        }
 
     }
+
+    function updateContractUI(){
+
+        barrierBox.style.display="none";
+        digitBox.style.display="none";
+
+        switch(contractType.value){
+
+            case "risefall":
+
+                buyUp.innerHTML="🟢 BUY UP";
+                buyDown.innerHTML="🔴 BUY DOWN";
+
+            break;
+
+            case "higherlower":
+
+                barrierBox.style.display="block";
+
+                buyUp.innerHTML="🟢 HIGHER";
+                buyDown.innerHTML="🔴 LOWER";
+
+            break;
+
+            case "evenodd":
+
+                buyUp.innerHTML="🟢 EVEN";
+                buyDown.innerHTML="🔴 ODD";
+
+            break;
+
+            case "overunder":
+
+                digitBox.style.display="block";
+
+                buyUp.innerHTML="🟢 OVER";
+                buyDown.innerHTML="🔴 UNDER";
+
+            break;
+
+            case "matchesdiffers":
+
+                digitBox.style.display="block";
+
+                buyUp.innerHTML="🟢 MATCHES";
+                buyDown.innerHTML="🔴 DIFFERS";
+
+            break;
+
+        }
+
+    }
+
+    tradeMode.addEventListener("change", updateTradeMode);
+
+    contractType.addEventListener("change", updateContractUI);
+
+    updateTradeMode();
+
+    updateContractUI();
 
 });
-
-contractType.addEventListener("change", updateContractUI);
-
-function updateContractUI(){
-
-    barrierBox.style.display="none";
-    digitBox.style.display="none";
-
-    switch(contractType.value){
-
-        case "risefall":
-
-            buyUp.innerHTML="🟢 BUY UP";
-            buyDown.innerHTML="🔴 BUY DOWN";
-
-        break;
-
-        case "higherlower":
-
-            barrierBox.style.display="block";
-
-            buyUp.innerHTML="🟢 HIGHER";
-            buyDown.innerHTML="🔴 LOWER";
-
-        break;
-
-        case "evenodd":
-
-            buyUp.innerHTML="🟢 EVEN";
-            buyDown.innerHTML="🔴 ODD";
-
-        break;
-
-        case "overunder":
-
-            digitBox.style.display="block";
-
-            buyUp.innerHTML="🟢 OVER";
-            buyDown.innerHTML="🔴 UNDER";
-
-        break;
-
-        case "matchesdiffers":
-
-            digitBox.style.display="block";
-
-            buyUp.innerHTML="🟢 MATCHES";
-            buyDown.innerHTML="🔴 DIFFERS";
-
-        break;
-
-    }
-
-}
-
-updateContractUI();
