@@ -212,9 +212,9 @@ box-shadow:0 -5px 20px rgba(0,0,0,.5);
 }
 
 .chart-card{
-height:calc(100vh - 170px);
+height:42vh;
 padding:10px;
-margin-bottom:45vh;
+margin-bottom:0;
 }
 
 .trade-card::-webkit-scrollbar{
