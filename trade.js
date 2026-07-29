@@ -337,3 +337,30 @@ document.getElementById("selectedDigit").textContent=this.dataset.digit;
 });
 
 });
+// Live Last-Digit Statistics
+
+const digitCount = new Array(10).fill(0);
+
+function updateDigitStats(price){
+
+    const lastDigit = Math.abs(Math.round(price * 100)) % 10;
+
+    digitCount[lastDigit]++;
+
+    let total = digitCount.reduce((a,b)=>a+b,0);
+
+    for(let i=0;i<10;i++){
+
+        const percent = total === 0 ? 0 : Math.round((digitCount[i]/total)*100);
+
+        const stat = document.getElementById("stat"+i);
+
+        if(stat){
+
+            stat.textContent = percent + "%";
+
+        }
+
+    }
+
+}
