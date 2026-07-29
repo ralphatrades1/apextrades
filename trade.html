@@ -157,17 +157,73 @@ placeholder="Search market...">
 
 <div class="trade-box">
 
+<h3>Trade Mode</h3>
+
+<select id="tradeMode">
+
+<option value="time">Time Contracts</option>
+
+<option value="tick">Tick Contracts</option>
+
+</select>
+
 <h3>Contract Type</h3>
 
 <select id="contractType">
 
 <option value="risefall">Rise/Fall</option>
+
 <option value="higherlower">Higher/Lower</option>
+
 <option value="evenodd">Even/Odd</option>
+
 <option value="overunder">Over/Under</option>
+
 <option value="matchesdiffers">Matches/Differs</option>
 
 </select>
+
+<div id="timeBox">
+
+<h3>Duration</h3>
+
+<select id="duration">
+
+<option value="30">30 Seconds</option>
+
+<option value="60">1 Minute</option>
+
+<option value="180">3 Minutes</option>
+
+<option value="300">5 Minutes</option>
+
+</select>
+
+</div>
+
+<div id="tickBox" style="display:none;">
+
+<h3>Ticks</h3>
+
+<select id="ticks">
+
+<option>1 Tick</option>
+
+<option>2 Ticks</option>
+
+<option>5 Ticks</option>
+
+<option>10 Ticks</option>
+
+<option>25 Ticks</option>
+
+<option>50 Ticks</option>
+
+<option>100 Ticks</option>
+
+</select>
+
+</div>
 
 <div id="barrierBox" style="display:none;">
 
