@@ -3,38 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexTrades</title>
 
-<title>ApexTrades | Trade Smart. Trade Apex.</title>
+<link rel="icon" href="logo.png">
 
-<meta name="description" content="Trade forex, synthetic indices, crypto and binary markets with ApexTrades.">
-<meta name="keywords" content="ApexTrades, trading, forex, crypto, binary options">
-<meta name="author" content="ApexTrades">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-<link rel="icon" type="image/png" href="logo.png">
+body{
+background:#0b0b0b;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+overflow:hidden;
+}
 
-<meta property="og:title" content="ApexTrades">
-<meta property="og:description" content="Trade Smart. Trade Apex.">
-<meta property="og:image" content="logo.png">
-<meta property="og:type" content="website">
+.loading{
+text-align:center;
+}
 
-<meta name="theme-color" content="#0b0b0b">
+.loading img{
+width:170px;
+margin-bottom:20px;
+animation:float 2s infinite ease-in-out;
+}
 
-<link rel="stylesheet" href="style.css">
+.loading h1{
+font-size:46px;
+color:#32cd32;
+}
+
+.loading p{
+margin-top:10px;
+font-size:18px;
+color:#cccccc;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+</style>
+
+<script>
+setTimeout(function(){
+window.location.href="login.html";
+},2500);
+</script>
+
 </head>
 
 <body>
 
 <div class="loading">
-<img src="logo.png" class="logo">
+<img src="logo.png" alt="ApexTrades Logo">
 <h1>ApexTrades</h1>
 <p>Trade Smart. Trade Apex.</p>
 </div>
-
-<script>
-setTimeout(()=>{
-window.location.href="login.html";
-},2500);
-</script>
 
 </body>
 </html>
