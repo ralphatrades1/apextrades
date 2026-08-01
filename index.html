@@ -3,47 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ApexTrades</title>
 
-<style>
-body{
-margin:0;
-background:#0b0b0b;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Arial,sans-serif;
-text-align:center;
-}
-
-h1{
-font-size:48px;
-color:#32cd32;
-}
-
-p{
-font-size:18px;
-color:#ccc;
-margin-top:10px;
-}
-</style>
-
-<script>
-setTimeout(function(){
-window.location.href="login.html";
-},2500);
-</script>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<div>
+<div class="loader">
+
+<div class="logo-box">
+
 <h1>ApexTrades</h1>
+
 <p>Trade Smart. Trade Apex.</p>
+
+<div class="loading-bar">
+
+<div class="loading-fill"></div>
+
 </div>
+
+</div>
+
+</div>
+
+<script>
+
+setTimeout(function(){
+
+window.location.href="login.html";
+
+},3000);
+
+</script>
 
 </body>
 </html>
