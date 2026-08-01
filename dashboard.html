@@ -6,158 +6,87 @@
 <title>ApexTrades Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#08111f;
-color:white;
-}
-
-.header{
-height:70px;
-background:#111827;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-border-bottom:1px solid #222;
-}
-
-.logo{
-font-size:30px;
-font-weight:bold;
-color:#00d26a;
-}
-
-.balance{
-background:#1a2434;
-padding:12px 20px;
-border-radius:12px;
-font-weight:bold;
-color:#00d26a;
-}
-
-.container{
-display:flex;
-min-height:calc(100vh - 70px);
-}
-
-.sidebar{
-width:230px;
-background:#111827;
-padding:20px;
-}
-
-.sidebar a{
-display:block;
-color:white;
-text-decoration:none;
-padding:15px;
-margin-bottom:10px;
-border-radius:10px;
-}
-
-.sidebar a:hover{
-background:#00d26a;
-}
-
-.main{
-flex:1;
-padding:25px;
-}
-
-.card{
-background:#111827;
-padding:20px;
-border-radius:18px;
-margin-bottom:20px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
-
-.stat{
-background:#182234;
-padding:20px;
-border-radius:15px;
-text-align:center;
-}
-
-.stat h2{
-color:#00d26a;
-margin-top:10px;
-}
-
-@media(max-width:900px){
-
-.container{
-flex-direction:column;
-}
-
-.sidebar{
-width:100%;
-display:flex;
-overflow:auto;
-}
-
-.sidebar a{
-white-space:nowrap;
-margin-right:10px;
-}
-
-}
-
-</style>
-
 </head>
 
 <body>
 
-<div class="header">
-
-<div class="logo">
-ApexTrades
-</div>
-
-<div class="balance">
-Balance: $1000.00
-</div>
-
-</div>
-
-<div class="container">
-
 <div class="sidebar">
 
-<a href="#">🏠 Dashboard</a>
+<div class="brand">
+<h2>ApexTrades</h2>
+</div>
 
-<a href="trade.html">📈 Trade</a>
+<ul>
 
-<a href="wallet.html">💰 Wallet</a>
+<li>🏠 Dashboard</li>
 
-<a href="history.html">📄 History</a>
+<li>📈 Trade</li>
 
-<a href="profile.html">👤 Profile</a>
+<li>💰 Wallet</li>
 
-<a href="#">⚙ Settings</a>
+<li>💳 Deposit</li>
+
+<li>💸 Withdraw</li>
+
+<li>📜 History</li>
+
+<li>👤 Profile</li>
+
+<li>⚙ Settings</li>
+
+</ul>
 
 </div>
 
 <div class="main">
 
-<h1>Welcome Back</h1>
+<header>
 
-<p style="margin-top:10px;margin-bottom:25px;color:#9ca3af;">
-Trade with confidence on ApexTrades.
-</p>
+<h1>Dashboard</h1>
+
+<div class="balance">
+
+Balance
+
+<h2>$1000.00</h2>
+
+</div>
+
+</header>
+
+<section class="cards">
+
+<div class="card">
+<h3>Total Balance</h3>
+<h1>$1000.00</h1>
+</div>
+
+<div class="card">
+<h3>Today's Profit</h3>
+<h1>$0.00</h1>
+</div>
+
+<div class="card">
+<h3>Open Trades</h3>
+<h1>0</h1>
+</div>
+
+<div class="card">
+<h3>Win Rate</h3>
+<h1>0%</h1>
+</div>
+
+</section>
+
+<section class="recent">
+
+<h2>Recent Activity</h2>
+
+<p>No recent transactions.</p>
+
+</section>
+
+</div>
+
+</body>
+</html>
